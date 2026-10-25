@@ -8,6 +8,41 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Check demo query parameter for instant inspection & automated testing
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const demoRole = params.get('demo');
+      if (demoRole === 'admin') {
+        const adminUser = { userId: 'ADM-001', name: 'System Administrator', email: 'admin@camp.org', role: 'admin' };
+        localStorage.setItem('mcrp_current_user', JSON.stringify(adminUser));
+        setUser(adminUser);
+        setLoading(false);
+        return;
+      } else if (demoRole === 'doctor') {
+        const docUser = { userId: 'USR-DOC-001', name: 'Dr. Rajesh Sharma', email: 'dr.sharma@health.org', role: 'doctor' };
+        localStorage.setItem('mcrp_current_user', JSON.stringify(docUser));
+        setUser(docUser);
+        setLoading(false);
+        return;
+      } else if (demoRole === 'participant') {
+        const partUser = {
+          userId: 'USR-PAR-001',
+          name: 'Rahul Verma Super',
+          email: 'rahul@gmail.com',
+          role: 'participant',
+          phone: '+91 98765 43210',
+          bloodGroup: 'O+',
+          age: '24',
+          address: 'Hostel Block 4, Room 302, Campus',
+          emergencyContact: 'Mr. Verma (Father) - +91 91234 56789'
+        };
+        localStorage.setItem('mcrp_current_user', JSON.stringify(partUser));
+        setUser(partUser);
+        setLoading(false);
+        return;
+      }
+    } catch {}
+
     // Check initial user from localStorage
     const current = api.getCurrentUser();
     if (current) {
