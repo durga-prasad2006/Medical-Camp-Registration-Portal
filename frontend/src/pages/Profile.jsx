@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { User, Mail, Phone, Heart, MapPin, Shield, CheckCircle, AlertCircle } from 'lucide-react';
 
@@ -16,6 +16,23 @@ export const Profile = () => {
     department: user?.department || '',
     specialization: user?.specialization || ''
   });
+
+  // Keep form synchronized whenever user context changes
+  useEffect(() => {
+    if (user) {
+      setFormData({
+        name: user.name || '',
+        phone: user.phone || '',
+        age: user.age || '',
+        gender: user.gender || 'Male',
+        bloodGroup: user.bloodGroup || 'O+',
+        address: user.address || '',
+        emergencyContact: user.emergencyContact || '',
+        department: user.department || '',
+        specialization: user.specialization || ''
+      });
+    }
+  }, [user]);
 
   const [saving, setSaving] = useState(false);
   const [success, setSuccess] = useState(false);

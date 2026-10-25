@@ -199,9 +199,23 @@ router.post("/admin-login", async (req, res) => {
 router.put("/users/:id", authMiddleware, async (req, res) => {
     try {
         const id = req.params.id;
-        const query = { $or: [{ userId: id }, { email: id.toLowerCase() }] };
+        const mongoose = require("mongoose");
+        const query = mongoose.Types.ObjectId.isValid(id)
+            ? { $or: [{ _id: id }, { userId: id }, { email: id.toLowerCase() }] }
+            : { $or: [{ userId: id }, { email: id.toLowerCase() }] };
 
-        const allowed = ["name", "role"];
+        const allowed = [
+            "name",
+            "phone",
+            "age",
+            "gender",
+            "bloodGroup",
+            "address",
+            "emergencyContact",
+            "department",
+            "specialization",
+            "role"
+        ];
         const updateData = {};
         for (const k of allowed) {
             if (req.body[k] !== undefined) updateData[k] = req.body[k];
@@ -210,7 +224,7 @@ router.put("/users/:id", authMiddleware, async (req, res) => {
         const updatedUser = await User.findOneAndUpdate(
             query,
             { $set: updateData },
-            { new: true, runValidators: true }
+            { new: true, runValidators: false }
         );
 
         if (!updatedUser) {

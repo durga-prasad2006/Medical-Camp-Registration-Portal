@@ -237,25 +237,31 @@ export const api = {
         });
         const data = await res.json();
         if (res.ok && data.user) {
-          localStorage.setItem(STORAGE_KEYS.CURRENT_USER, JSON.stringify(data.user));
-          return data.user;
+          const current = api.getCurrentUser() || {};
+          const merged = { ...current, ...updateData, ...data.user };
+          localStorage.setItem(STORAGE_KEYS.CURRENT_USER, JSON.stringify(merged));
+          return merged;
+        } else if (!res.ok) {
+          console.warn('Backend update failed:', data.message);
         }
       } catch (err) {
         console.warn('Backend updateProfile failed, falling back to storage:', err);
       }
     }
 
+    const current = api.getCurrentUser() || {};
+    const merged = { ...current, ...updateData };
+    localStorage.setItem(STORAGE_KEYS.CURRENT_USER, JSON.stringify(merged));
+
     const users = getStoredData(STORAGE_KEYS.USERS);
     const index = users.findIndex((u) => u.userId === userId);
-    if (index === -1) throw new Error('User not found');
+    if (index !== -1) {
+      const updated = { ...users[index], ...updateData };
+      users[index] = updated;
+      setStoredData(STORAGE_KEYS.USERS, users);
+    }
 
-    const updated = { ...users[index], ...updateData };
-    users[index] = updated;
-    setStoredData(STORAGE_KEYS.USERS, users);
-
-    const { password: _, ...safeUser } = updated;
-    localStorage.setItem(STORAGE_KEYS.CURRENT_USER, JSON.stringify(safeUser));
-    return safeUser;
+    return merged;
   },
 
   // -----------------------------------------------------------------------

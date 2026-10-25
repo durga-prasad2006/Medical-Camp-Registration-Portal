@@ -1,0 +1,1936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Camp Registration Portal - 30-Page Technical Documentation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #0f172a;
+            color: #1e293b;
+            line-height: 1.5;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        /* Top sticky print navigation bar (screen only) */
+        .no-print-bar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #1e293b;
+            color: #f8fafc;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            border-bottom: 2px solid #0d9488;
+        }
+
+        .no-print-bar .btn-print {
+            background: #0d9488;
+            color: #ffffff;
+            border: none;
+            padding: 8px 18px;
+            font-size: 13px;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .no-print-bar .btn-print:hover {
+            background: #0f766e;
+        }
+
+        .doc-container {
+            max-width: 850px;
+            margin: 30px auto;
+            padding: 0;
+        }
+
+        /* Each individual A4 page */
+        .page {
+            background: #ffffff;
+            width: 100%;
+            min-height: 1120px;
+            margin-bottom: 30px;
+            padding: 40px 48px;
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1.5px solid #e2e8f0;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .page-header .brand {
+            color: #0d9488;
+        }
+
+        .page-body {
+            flex-grow: 1;
+        }
+
+        .page-title {
+            font-size: 18px;
+            font-weight: 900;
+            color: #0f172a;
+            margin-bottom: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .page-subtitle {
+            font-size: 12.5px;
+            font-weight: 600;
+            color: #64748b;
+            margin-bottom: 16px;
+        }
+
+        .page-footer {
+            border-top: 1.5px solid #e2e8f0;
+            padding-top: 8px;
+            margin-top: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            font-weight: 600;
+            color: #94a3b8;
+        }
+
+        .page-footer .page-number {
+            font-weight: 800;
+            color: #0d9488;
+            background: #f0fdfa;
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid #ccfbf1;
+        }
+
+        /* Print media styling */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 12mm 15mm 12mm 15mm;
+            }
+
+            body {
+                background: #ffffff;
+                color: #000000;
+            }
+
+            .no-print-bar {
+                display: none !important;
+            }
+
+            .doc-container {
+                max-width: 100%;
+                margin: 0;
+            }
+
+            .page {
+                box-shadow: none;
+                border-radius: 0;
+                margin: 0;
+                padding: 0;
+                min-height: 270mm;
+                page-break-after: always;
+                break-after: page;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="no-print-bar">
+    <div>
+        <strong style="color: #2dd4bf; font-size: 15px;">Medical Camp Registration Portal &bull; Full Project Documentation</strong>
+        <span style="font-size: 12px; color: #94a3b8; margin-left: 10px;">(Exact 30-Page Academic Standard Format)</span>
+    </div>
+    <div>
+        <button class="btn-print" onclick="window.print()">Print / Save as PDF (Ctrl + P)</button>
+    </div>
+</div>
+
+<div class="doc-container">
+
+    <div class="page" id="page-1">
+        <div class="page-header">
+            <span class="brand">Medical Camp Registration Portal &bull; SIH 2025</span>
+            <span>TITLE & COVER PAGE</span>
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">PROJECT 2: MERN STACK MINI PROJECT</h2>
+            <div class="page-subtitle">Medical Camp Registration Portal</div>
+            
+        <div style="text-align: center; padding-top: 30px; padding-bottom: 20px;">
+            <div style="font-size: 13px; font-weight: 800; letter-spacing: 2px; color: #0d9488; text-transform: uppercase; margin-bottom: 12px;">MERN Stack Full-Stack Mini Project</div>
+            <h1 style="font-size: 32px; font-weight: 900; color: #0f172a; margin-bottom: 10px; line-height: 1.2;">MEDICAL CAMP REGISTRATION PORTAL</h1>
+            <p style="font-size: 16px; font-weight: 600; color: #475569; margin-bottom: 25px;">(Inspired by SIH 2025 – Healthcare & Medical Camp Management)</p>
+            
+            <div style="display: inline-block; padding: 10px 24px; background: #f0fdfa; border: 2px solid #0d9488; border-radius: 12px; margin-bottom: 35px;">
+                <span style="font-size: 13.5px; font-weight: 700; color: #0f766e;">Comprehensive 30-Page Technical Project Documentation Report</span>
+            </div>
+
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; max-width: 620px; margin: 0 auto 35px auto; text-align: left;">
+                <h3 style="font-size: 14px; font-weight: 800; color: #1e293b; margin-bottom: 14px; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">Project Metadata & Submission Details</h3>
+                <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+                    <tr><td style="padding: 5px 0; font-weight: 700; color: #64748b; width: 40%;">Project Title:</td><td style="padding: 5px 0; font-weight: 700; color: #0f172a;">Medical Camp Registration Portal</td></tr>
+                    <tr><td style="padding: 5px 0; font-weight: 700; color: #64748b;">Framework / Architecture:</td><td style="padding: 5px 0; color: #0f172a;">MERN Stack (MongoDB Atlas, Express.js, React.js, Node.js)</td></tr>
+                    <tr><td style="padding: 5px 0; font-weight: 700; color: #64748b;">Student Developer:</td><td style="padding: 5px 0; font-weight: 700; color: #0d9488;">Durga Prasad</td></tr>
+                    <tr><td style="padding: 5px 0; font-weight: 700; color: #64748b;">GitHub Profile:</td><td style="padding: 5px 0; color: #0f172a;">durga-prasad2006</td></tr>
+                    <tr><td style="padding: 5px 0; font-weight: 700; color: #64748b;">Official Repository:</td><td style="padding: 5px 0; color: #0f172a;">Medical-Camp-Registration-Portal</td></tr>
+                    <tr><td style="padding: 5px 0; font-weight: 700; color: #64748b;">Primary Theme:</td><td style="padding: 5px 0; color: #0f172a;">SIH 2025 Smart Healthcare & Community Outreach</td></tr>
+                    <tr><td style="padding: 5px 0; font-weight: 700; color: #64748b;">Database Architecture:</td><td style="padding: 5px 0; color: #0f172a;">MongoDB Atlas (Strict 3-Collection Relational Model)</td></tr>
+                    <tr><td style="padding: 5px 0; font-weight: 700; color: #64748b;">Client Tooling:</td><td style="padding: 5px 0; color: #0f172a;">React 19, Vite 8, Tailwind CSS v4, Lucide React</td></tr>
+                    <tr><td style="padding: 5px 0; font-weight: 700; color: #64748b;">Live Production URL:</td><td style="padding: 5px 0; font-weight: 700; color: #2563eb;">https://medical-camp-registration-portal-tawny.vercel.app/</td></tr>
+                </table>
+            </div>
+
+            <div style="font-size: 12.5px; color: #64748b; line-height: 1.6;">
+                <strong>Academic Session:</strong> 2026 &bull; <strong>Document Version:</strong> 2.0 Production Release<br/>
+                <em>Department of Computer Science & Engineering / Information Technology</em>
+            </div>
+        </div>
+        
+        </div>
+        <div class="page-footer">
+            <span>MERN Stack Mini Project &bull; Academic Session 2026</span>
+            <span class="page-number">Page 1 of 30</span>
+        </div>
+    </div>
+    
+
+    <div class="page" id="page-2">
+        <div class="page-header">
+            <span class="brand">Medical Camp Registration Portal &bull; SIH 2025</span>
+            <span>PRELIMINARY PAGES</span>
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">CERTIFICATE & DECLARATION</h2>
+            <div class="page-subtitle">Official Academic & Technical Verification</div>
+            
+        <div style="padding: 10px 0;">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <h2 style="font-size: 19px; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px;">Certificate of Completion</h2>
+                <div style="width: 70px; height: 3px; background: #0d9488; margin: 0 auto;"></div>
+            </div>
+
+            <p style="font-size: 13.5px; line-height: 1.75; color: #334155; text-align: justify; margin-bottom: 20px;">
+                This is to certify that the project entitled <strong>"Medical Camp Registration Portal"</strong> submitted by <strong>Durga Prasad</strong> (GitHub: <code>durga-prasad2006</code>) in partial fulfillment of the requirements for the completion of the <strong>MERN Stack Full-Stack Development Mini Project</strong>, inspired by <em>Smart India Hackathon (SIH 2025 – Healthcare & Medical Camp Management)</em>, is a bonafide record of authentic work carried out under our supervision and guidance during the academic session 2026.
+            </p>
+
+            <p style="font-size: 13.5px; line-height: 1.75; color: #334155; text-align: justify; margin-bottom: 28px;">
+                The student has successfully conceptualized, built, verified, and deployed the full-stack architecture comprising an interactive React single-page frontend, an Express.js/Node.js REST API layer, and a cloud-hosted MongoDB Atlas database adhering strictly to a 3-collection relational structure, role-based access control, dynamic doctor assignment validation, and public cloud deployment on Vercel.
+            </p>
+
+            <table style="width: 100%; margin-top: 30px; border-collapse: collapse; text-align: center;">
+                <tr>
+                    <td style="width: 50%; padding-bottom: 35px;">
+                        <div style="border-bottom: 1px dashed #94a3b8; width: 70%; margin: 0 auto 8px auto;"></div>
+                        <span style="font-weight: 700; font-size: 13px; color: #0f172a;">Internal Project Guide / Mentor</span><br/>
+                        <span style="font-size: 11.5px; color: #64748b;">Department of Computer Engineering</span>
+                    </td>
+                    <td style="width: 50%; padding-bottom: 35px;">
+                        <div style="border-bottom: 1px dashed #94a3b8; width: 70%; margin: 0 auto 8px auto;"></div>
+                        <span style="font-weight: 700; font-size: 13px; color: #0f172a;">Head of Department (HoD)</span><br/>
+                        <span style="font-size: 11.5px; color: #64748b;">School of Computing & IT</span>
+                    </td>
+                </tr>
+            </table>
+
+            <div style="margin-top: 15px; padding: 16px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px;">
+                <h4 style="font-size: 13px; font-weight: 800; color: #0f172a; margin-bottom: 6px; text-transform: uppercase;">Candidate's Declaration</h4>
+                <p style="font-size: 12.5px; line-height: 1.65; color: #475569; margin: 0; text-align: justify;">
+                    I hereby declare that this project work entitled <strong>"Medical Camp Registration Portal"</strong> is an original work designed and implemented by me. All resources, libraries, specifications, and reference materials utilized during the course of development have been duly acknowledged.
+                </p>
+                <div style="text-align: right; margin-top: 10px; font-weight: 700; font-size: 12.5px; color: #0d9488;">
+                    — Durga Prasad (durga-prasad2006)
+                </div>
+            </div>
+        </div>
+        
+        </div>
+        <div class="page-footer">
+            <span>MERN Stack Mini Project &bull; Academic Session 2026</span>
+            <span class="page-number">Page 2 of 30</span>
+        </div>
+    </div>
+    
+
+    <div class="page" id="page-3">
+        <div class="page-header">
+            <span class="brand">Medical Camp Registration Portal &bull; SIH 2025</span>
+            <span>PRELIMINARY PAGES</span>
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">ACKNOWLEDGEMENTS & EXECUTIVE ABSTRACT</h2>
+            <div class="page-subtitle">Overview, Motivation & Core Value Proposition</div>
+            
+        <div style="padding: 10px 0;">
+            <div style="margin-bottom: 24px;">
+                <h3 style="font-size: 15px; font-weight: 800; color: #0d9488; text-transform: uppercase; margin-bottom: 8px;">Acknowledgements</h3>
+                <p style="font-size: 13px; line-height: 1.7; color: #334155; text-align: justify; margin: 0;">
+                    I express my sincere gratitude to my faculty mentors, laboratory staff, and the open-source community whose documentation and tools made this work possible. I am particularly inspired by the problem statements released under the <strong>Smart India Hackathon (SIH 2025)</strong> in the domain of Community Healthcare and Outreach Camp Automation, which inspired the development of this streamlined digital portal.
+                </p>
+            </div>
+
+            <div style="margin-bottom: 24px;">
+                <h3 style="font-size: 15px; font-weight: 800; color: #0d9488; text-transform: uppercase; margin-bottom: 8px;">Executive Abstract</h3>
+                <p style="font-size: 13px; line-height: 1.75; color: #334155; text-align: justify; margin-bottom: 12px;">
+                    Educational institutions, NGOs, and hospitals frequently organize free community healthcare camps, including <strong>General Health Checkups, Eye Screening, Blood Donation Drives, Dental Diagnostics, and Health Awareness Programs</strong>. In traditional settings, participant intake and administrative scheduling rely heavily on manual paper registers or ad-hoc spreadsheets. This manual paradigm incurs severe operational bottlenecks: lost records, overcrowding, lack of real-time slot constraints, doctor-participant scheduling mismatches, and delayed reporting.
+                </p>
+                <p style="font-size: 13px; line-height: 1.75; color: #334155; text-align: justify; margin-bottom: 12px;">
+                    The <strong>Medical Camp Registration Portal</strong> addresses these challenges as a lightweight, purpose-built Full-Stack Web Application developed using the <strong>MERN Stack (MongoDB Atlas, Express.js, React.js, and Node.js)</strong>. The system provides clear separation between three key stakeholder roles: <strong>Administrators</strong>, <strong>Participants</strong>, and <strong>Doctors</strong>.
+                </p>
+                <p style="font-size: 13px; line-height: 1.75; color: #334155; text-align: justify; margin: 0;">
+                    To maintain strict technical rigor, the database layer is engineered around a <strong>strict 3-collection relational structure</strong> (<code>Users</code>, <code>MedicalCamps</code>, and <code>Registrations</code>) with exactly defined attributes, plain-text password persistence as specified, a single master administrator account with top-level locked modal access, and comprehensive backend validation ensuring camps can only be assigned to doctors verified in the database.
+                </p>
+            </div>
+
+            <div style="background: #f1f5f9; padding: 12px 18px; border-radius: 10px; border-left: 4px solid #0d9488; font-size: 12.5px; color: #1e293b;">
+                <strong>Key Takeaway:</strong> A production-tested, cloud-deployed full-stack digital registration platform offering sub-second responsiveness, zero registration duplication, automated token slip generation, and centralized medical camp administration.
+            </div>
+        </div>
+        
+        </div>
+        <div class="page-footer">
+            <span>MERN Stack Mini Project &bull; Academic Session 2026</span>
+            <span class="page-number">Page 3 of 30</span>
+        </div>
+    </div>
+    
+
+    <div class="page" id="page-4">
+        <div class="page-header">
+            <span class="brand">Medical Camp Registration Portal &bull; SIH 2025</span>
+            <span>PRELIMINARY PAGES</span>
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">TABLE OF CONTENTS & DOCUMENT ROADMAP</h2>
+            <div class="page-subtitle">Comprehensive 30-Page Structural Outline</div>
+            
+        <div style="padding: 10px 0;">
+            <h3 style="font-size: 15px; font-weight: 800; color: #0f172a; text-transform: uppercase; margin-bottom: 14px; border-bottom: 2px solid #e2e8f0; padding-bottom: 6px;">Document Structure (Pages 1 to 30)</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 12px; line-height: 1.6;">
+                <div style="background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0;">
+                    <strong style="color: #0d9488; display: block; margin-bottom: 6px;">PART I: FOUNDATIONS & ROLES</strong>
+                    <ul style="margin: 0; padding-left: 18px; color: #334155;">
+                        <li><strong>Page 1:</strong> Title Page & Submission Metadata</li>
+                        <li><strong>Page 2:</strong> Certificate of Completion & Declaration</li>
+                        <li><strong>Page 3:</strong> Acknowledgements & Executive Abstract</li>
+                        <li><strong>Page 4:</strong> Table of Contents & Structure Roadmap</li>
+                        <li><strong>Page 5:</strong> Chapter 1: Introduction & Problem Statement</li>
+                        <li><strong>Page 6:</strong> Chapter 1: Objectives, Motivation & Scope</li>
+                        <li><strong>Page 7:</strong> Chapter 2: User Roles & Permissions Matrix</li>
+                    </ul>
+                    <strong style="color: #0d9488; display: block; margin-top: 10px; margin-bottom: 6px;">PART II: ARCHITECTURE & DATABASE</strong>
+                    <ul style="margin: 0; padding-left: 18px; color: #334155;">
+                        <li><strong>Page 8:</strong> Chapter 3: MERN 3-Tier System Architecture</li>
+                        <li><strong>Page 9:</strong> Chapter 4: Database Design (Users Collection)</li>
+                        <li><strong>Page 10:</strong> Chapter 4: Schema (Camps & Registrations)</li>
+                        <li><strong>Page 11:</strong> Chapter 5: System Modules 1 to 3</li>
+                        <li><strong>Page 12:</strong> Chapter 5: System Modules 4 to 7</li>
+                    </ul>
+                </div>
+
+                <div style="background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0;">
+                    <strong style="color: #0d9488; display: block; margin-bottom: 6px;">PART III: IMPLEMENTATION & APIS</strong>
+                    <ul style="margin: 0; padding-left: 18px; color: #334155;">
+                        <li><strong>Page 13:</strong> Chapter 6: Working Principle & Workflow</li>
+                        <li><strong>Page 14:</strong> Chapter 7: React Frontend & Core Concepts</li>
+                        <li><strong>Page 15:</strong> Chapter 7: Hooks & Centered React Portal</li>
+                        <li><strong>Page 16:</strong> Chapter 8: Express Backend & Middleware</li>
+                        <li><strong>Page 17:</strong> Chapter 8: REST APIs (Auth & Doctors)</li>
+                        <li><strong>Page 18:</strong> Chapter 8: REST APIs (Medical Camps CRUD)</li>
+                        <li><strong>Page 19:</strong> Chapter 8: REST APIs (Registrations & Status)</li>
+                        <li><strong>Page 20:</strong> Chapter 9: Frontend Pages Walkthrough (1 - 4)</li>
+                        <li><strong>Page 21:</strong> Chapter 9: Frontend Pages Walkthrough (5 - 9)</li>
+                    </ul>
+                    <strong style="color: #0d9488; display: block; margin-top: 10px; margin-bottom: 6px;">PART IV: SECURITY, TESTING & DEPLOYMENT</strong>
+                    <ul style="margin: 0; padding-left: 18px; color: #334155;">
+                        <li><strong>Page 22:</strong> Chapter 10: Security & Admin Master Access</li>
+                        <li><strong>Page 23:</strong> Chapter 11: Doctor DB Verification Logic</li>
+                        <li><strong>Page 24:</strong> Chapter 12: Data Flow & Sequence Diagrams</li>
+                        <li><strong>Page 25:</strong> Chapter 13: QA, Test Cases & Verification</li>
+                        <li><strong>Page 26:</strong> Chapter 14: Performance & Vite Bundling</li>
+                        <li><strong>Page 27:</strong> Chapter 15: Cloud Deployment & Config</li>
+                        <li><strong>Page 28:</strong> Chapter 16: Results & Future Roadmap</li>
+                        <li><strong>Page 29:</strong> Chapter 17: Conclusion & Summary</li>
+                        <li><strong>Page 30:</strong> Chapter 18: References & Production URL</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        </div>
+        <div class="page-footer">
+            <span>MERN Stack Mini Project &bull; Academic Session 2026</span>
+            <span class="page-number">Page 4 of 30</span>
+        </div>
+    </div>
+    
+
+    <div class="page" id="page-5">
+        <div class="page-header">
+            <span class="brand">Medical Camp Registration Portal &bull; SIH 2025</span>
+            <span>CHAPTER 1: INTRODUCTION</span>
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">CHAPTER 1: INTRODUCTION & PROBLEM STATEMENT</h2>
+            <div class="page-subtitle">Healthcare Outreach Context & Conventional Bottlenecks</div>
+            
+        <div style="padding: 10px 0;">
+            <h3 style="font-size: 15px; font-weight: 800; color: #0f172a; text-transform: uppercase; margin-bottom: 10px;">1.1 Background of Community Healthcare Camps</h3>
+            <p style="font-size: 13px; line-height: 1.75; color: #334155; text-align: justify; margin-bottom: 14px;">
+                Community medical camps constitute a vital pillar of preventive healthcare in developing regions and academic environments. Higher education institutions, non-profit charitable organizations, and medical colleges regularly organize free specialized checkups to serve students, staff, and surrounding socio-economically disadvantaged populations. Typical camps include:
+            </p>
+            <ul style="font-size: 12.5px; line-height: 1.7; color: #334155; margin-bottom: 16px;">
+                <li><strong>General Health Examination Camps:</strong> Routine diagnostic screenings, vitals tracking (blood pressure, pulse, glucose), and general physician consultations.</li>
+                <li><strong>Eye Care & Refraction Camps:</strong> Vision acuity testing, cataract detection, and free spectacle distributions.</li>
+                <li><strong>Voluntary Blood Donation Camps:</strong> Donor registration, blood typing, hemoglobin screening, and collection tracking.</li>
+                <li><strong>Dental Diagnostic & Hygiene Camps:</strong> Oral cancer screenings, dental caries assessment, and scaling advice.</li>
+                <li><strong>Cardiology & Lifestyle Screening Camps:</strong> ECG screenings, cardiac risk evaluations, and preventive dietary education.</li>
+            </ul>
+
+            <h3 style="font-size: 15px; font-weight: 800; color: #0f172a; text-transform: uppercase; margin-bottom: 10px;">1.2 The Problem Statement (Inspired by SIH 2025)</h3>
+            <p style="font-size: 13px; line-height: 1.75; color: #334155; text-align: justify; margin-bottom: 14px;">
+                Despite the noble intentions behind organizing these medical camps, their operational execution is severely hampered by reliance on manual, paper-driven workflows. When hundreds of participants gather simultaneously at a college venue:
+            </p>
+            
+            <div style="background: #fff1f2; border-left: 4px solid #e11d48; padding: 12px 16px; border-radius: 8px; margin-bottom: 16px;">
+                <strong style="color: #9f1239; font-size: 13px; display: block; margin-bottom: 4px;">Critical Deficiencies in Traditional Manual Systems:</strong>
+                <ol style="font-size: 12.5px; color: #881337; margin: 0; padding-left: 18px; line-height: 1.6;">
+                    <li><strong>Queue Congestion & Lost Records:</strong> Manual tokens and physical paper forms easily tear, get lost, or suffer illegible handwriting errors.</li>
+                    <li><strong>Capacity Limit Violations:</strong> Overbooking occurs because organizers cannot enforce maximum participant limits in real time.</li>
+                    <li><strong>Orphan Doctor Assignments:</strong> Camps are announced without ensuring that certified specialist doctors are formally scheduled.</li>
+                    <li><strong>Lack of Real-Time Participant Visibility:</strong> Participants have no way to verify their registration status before traveling to the venue.</li>
+                </ol>
+            </div>
+
+            <p style="font-size: 13px; line-height: 1.75; color: #334155; text-align: justify; margin: 0;">
+                The <strong>Medical Camp Registration Portal</strong> was conceived to eradicate these inefficiencies through a responsive, lightweight, and robust full-stack software application.
+            </p>
+        </div>
+        
+        </div>
+        <div class="page-footer">
+            <span>MERN Stack Mini Project &bull; Academic Session 2026</span>
+            <span class="page-number">Page 5 of 30</span>
+        </div>
+    </div>
+    
+
+    <div class="page" id="page-6">
+        <div class="page-header">
+            <span class="brand">Medical Camp Registration Portal &bull; SIH 2025</span>
+            <span>CHAPTER 1: INTRODUCTION</span>
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">CHAPTER 1: OBJECTIVES, MOTIVATION & SCOPE</h2>
+            <div class="page-subtitle">Project Goals & Scope Distinction (Mini MERN vs HMS)</div>
+            
+        <div style="padding: 10px 0;">
+            <h3 style="font-size: 15px; font-weight: 800; color: #0f172a; text-transform: uppercase; margin-bottom: 10px;">1.3 Why Develop this Project?</h3>
+            <p style="font-size: 13px; line-height: 1.7; color: #334155; text-align: justify; margin-bottom: 12px;">
+                The project serves both educational excellence in software engineering and practical societal utility. The specific pedagogical and technical motivators include:
+            </p>
+            <table style="width: 100%; border-collapse: collapse; font-size: 12.5px; margin-bottom: 20px;">
+                <thead>
+                    <tr style="background: #0d9488; color: white;">
+                        <th style="padding: 8px 10px; text-align: left; border: 1px solid #0f766e; width: 8%;">#</th>
+                        <th style="padding: 8px 10px; text-align: left; border: 1px solid #0f766e; width: 32%;">Core Objective</th>
+                        <th style="padding: 8px 10px; text-align: left; border: 1px solid #0f766e;">Technical Competency Mastered</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background: #ffffff;"><td style="padding: 6px 10px; border: 1px solid #e2e8f0; font-weight: 700;">1</td><td style="padding: 6px 10px; border: 1px solid #e2e8f0; font-weight: 700;">Learn MERN Stack</td><td style="padding: 6px 10px; border: 1px solid #e2e8f0;">End-to-end integration of MongoDB Atlas, Express.js, React 19, and Node.js.</td></tr>
+                    <tr style="background: #f8fafc;"><td style="padding: 6px 10px; border: 1px solid #e2e8f0; font-weight: 700;">2</td><td style="padding: 6px 10px; border: 1px solid #e2e8f0; font-weight: 700;">Practice CRUD Operations</td><td style="padding: 6px 10px; border: 1px solid #e2e8f0;">Full Create, Read, Update, Delete cycles on Medical Camps and Registrations.</td></tr>
+                    <tr style="background: #ffffff;"><td style="padding: 6px 10px; border: 1px solid #e2e8f0; font-weight: 700;">3</td><td style="padding: 6px 10px; border: 1px solid #e2e8f0; font-weight: 700;">User Authentication</td><td style="padding: 6px 10px; border: 1px solid #e2e8f0;">Role-based authentication, JWT bearer token verification, and master admin security.</td></tr>
+                    <tr style="background: #f8fafc;"><td style="padding: 6px 10px; border: 1px solid #e2e8f0; font-weight: 700;">4</td><td style="padding: 6px 10px; border: 1px solid #e2e8f0; font-weight: 700;">REST API Development</td><td style="padding: 6px 10px; border: 1px solid #e2e8f0;">Architecting standardized JSON REST endpoints following clean HTTP conventions.</td></tr>
+                    <tr style="background: #ffffff;"><td style="padding: 6px 10px; border: 1px solid #e2e8f0; font-weight: 700;">5</td><td style="padding: 6px 10px; border: 1px solid #e2e8f0; font-weight: 700;">Digital Camp Management</td><td style="padding: 6px 10px; border: 1px solid #e2e8f0;">Replacing paper tokens with instant digital slips and live capacity calculations.</td></tr>
+                    <tr style="background: #f8fafc;"><td style="padding: 6px 10px; border: 1px solid #e2e8f0; font-weight: 700;">6</td><td style="padding: 6px 10px; border: 1px solid #e2e8f0; font-weight: 700;">React Components & Routing</td><td style="padding: 6px 10px; border: 1px solid #e2e8f0;">Multi-page SPA using React Router v7, Context API, and React Portals.</td></tr>
+                </tbody>
+            </table>
+
+            <h3 style="font-size: 15px; font-weight: 800; color: #0f172a; text-transform: uppercase; margin-bottom: 10px;">1.4 Project Scope: Mini MERN Application vs. Full HMS</h3>
+            <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 14px; font-size: 12.5px; line-height: 1.7; color: #1e3a8a;">
+                <strong>Explicit Scope Boundary:</strong> This application is deliberately designed as a <em>Mini MERN Stack Application</em> centered strictly on <strong>Medical Camp Scheduling and Participant Registration</strong>. It is <u>not</u> a bloated Hospital Management System (HMS). It intentionally excludes complex in-patient billing, pharmacy inventories, laboratory instrument telemetry, or multi-department ward scheduling. By maintaining a laser focus on camp registration and attendance tracking, the portal guarantees high performance, rapid deployment, and maximum usability.
+            </div>
+        </div>
+        
+        </div>
+        <div class="page-footer">
+            <span>MERN Stack Mini Project &bull; Academic Session 2026</span>
+            <span class="page-number">Page 6 of 30</span>
+        </div>
+    </div>
+    
+
+    <div class="page" id="page-7">
+        <div class="page-header">
+            <span class="brand">Medical Camp Registration Portal &bull; SIH 2025</span>
+            <span>CHAPTER 2: USER ROLES</span>
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">CHAPTER 2: USER ROLES & ACTOR SPECIFICATIONS</h2>
+            <div class="page-subtitle">Admin, Participant & Doctor Privileges Matrix</div>
+            
+        <div style="padding: 10px 0;">
+            <p style="font-size: 13px; line-height: 1.7; color: #334155; text-align: justify; margin-bottom: 16px;">
+                The portal strictly delineates authority and interface capabilities across three discrete user roles: <strong>Administrator</strong>, <strong>Participant</strong>, and <strong>Doctor</strong>.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px;">
+                <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-top: 4px solid #f59e0b; border-radius: 8px; padding: 12px;">
+                    <h4 style="font-size: 13.5px; font-weight: 800; color: #b45309; margin: 0 0 6px 0;">ADMINISTRATOR</h4>
+                    <p style="font-size: 11.5px; color: #64748b; margin-bottom: 8px;">Single Master Account (ADM-001)</p>
+                    <ul style="font-size: 12px; line-height: 1.6; color: #334155; margin: 0; padding-left: 16px;">
+                        <li>Secure Master Password Login</li>
+                        <li>Create & Schedule Camps</li>
+                        <li>Update Camp Venues & Limits</li>
+                        <li>Assign Registered Doctors</li>
+                        <li>View All Participant Rosters</li>
+                        <li>Generate Analytical Reports</li>
+                    </ul>
+                </div>
+
+                <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-top: 4px solid #0d9488; border-radius: 8px; padding: 12px;">
+                    <h4 style="font-size: 13.5px; font-weight: 800; color: #0f766e; margin: 0 0 6px 0;">PARTICIPANT</h4>
+                    <p style="font-size: 11.5px; color: #64748b; margin-bottom: 8px;">General Public & Students</p>
+                    <ul style="font-size: 12px; line-height: 1.6; color: #334155; margin: 0; padding-left: 16px;">
+                        <li>Self-Registration & Login</li>
+                        <li>Browse Upcoming Camps</li>
+                        <li>Filter by Camp Specialty</li>
+                        <li>One-Click Camp Enrollment</li>
+                        <li>Track Registration Status</li>
+                        <li>Download Digital Token Slips</li>
+                    </ul>
+                </div>
+
+                <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-top: 4px solid #6366f1; border-radius: 8px; padding: 12px;">
+                    <h4 style="font-size: 13.5px; font-weight: 800; color: #4338ca; margin: 0 0 6px 0;">DOCTOR</h4>
+                    <p style="font-size: 11.5px; color: #64748b; margin-bottom: 8px;">Verified Medical Professionals</p>
+                    <ul style="font-size: 12px; line-height: 1.6; color: #334155; margin: 0; padding-left: 16px;">
+                        <li>Doctor Account Registration</li>
+                        <li>Credentials & Specialty Profile</li>
+                        <li>View Assigned Camp Dates</li>
+                        <li>Access Patient Consult Lists</li>
+                        <li>Mark Attendance (Attended)</li>
+                        <li>Review Camp Patient Vitals</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 style="font-size: 14px; font-weight: 800; color: #0f172a; text-transform: uppercase; margin-bottom: 10px;">User Role Permissions Matrix</h3>
+            <table style="width: 100%; border-collapse: collapse; font-size: 12px; text-align: center;">
+                <thead>
+                    <tr style="background: #1e293b; color: white;">
+                        <th style="padding: 8px; text-align: left; border: 1px solid #334155;">Operation / Endpoint Capability</th>
+                        <th style="padding: 8px; border: 1px solid #334155; width: 18%;">Admin</th>
+                        <th style="padding: 8px; border: 1px solid #334155; width: 18%;">Participant</th>
+                        <th style="padding: 8px; border: 1px solid #334155; width: 18%;">Doctor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td style="padding: 6px 8px; border: 1px solid #e2e8f0; text-align: left;">Register New Account (/register)</td><td style="padding: 6px; border: 1px solid #e2e8f0; color: #e11d48; font-weight: bold;">PROHIBITED</td><td style="padding: 6px; border: 1px solid #e2e8f0; color: #16a34a; font-weight: bold;">ALLOWED</td><td style="padding: 6px; border: 1px solid #e2e8f0; color: #16a34a; font-weight: bold;">ALLOWED</td></tr>
+                    <tr style="background: #f8fafc;"><td style="padding: 6px 8px; border: 1px solid #e2e8f0; text-align: left;">Master Admin Modal Access (/admin-login)</td><td style="padding: 6px; border: 1px solid #e2e8f0; color: #16a34a; font-weight: bold;">EXCLUSIVE</td><td style="padding: 6px; border: 1px solid #e2e8f0; color: #e11d48; font-weight: bold;">DENIED</td><td style="padding: 6px; border: 1px solid #e2e8f0; color: #e11d48; font-weight: bold;">DENIED</td></tr>
+                    <tr><td style="padding: 6px 8px; border: 1px solid #e2e8f0; text-align: left;">Create New Medical Camp (POST /medicalCamps)</td><td style="padding: 6px; border: 1px solid #e2e8f0; color: #16a34a; font-weight: bold;">ALLOWED</td><td style="padding: 6px; border: 1px solid #e2e8f0; color: #e11d48; font-weight: bold;">DENIED</td><td style="padding: 6px; border: 1px solid #e2e8f0; color: #e11d48; font-weight: bold;">DENIED</td></tr>
+                    <tr style="background: #f8fafc;"><td style="padding: 6px 8px; border: 1px solid #e2e8f0; text-align: left;">Register for Medical Camp (POST /registerCamp)</td><td style="padding: 6px; border: 1px solid #e2e8f0; color: #64748b;">N/A</td><td style="padding: 6px; border: 1px solid #e2e8f0; color: #16a34a; font-weight: bold;">ALLOWED</td><td style="padding: 6px; border: 1px solid #e2e8f0; color: #64748b;">N/A</td></tr>
+                    <tr><td style="padding: 6px 8px; border: 1px solid #e2e8f0; text-align: left;">Update Attendance Roster (PUT /registrations/:id)</td><td style="padding: 6px; border: 1px solid #e2e8f0; color: #16a34a; font-weight: bold;">ALLOWED</td><td style="padding: 6px; border: 1px solid #e2e8f0; color: #e11d48; font-weight: bold;">DENIED</td><td style="padding: 6px; border: 1px solid #e2e8f0; color: #16a34a; font-weight: bold;">ALLOWED</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        </div>
+        <div class="page-footer">
+            <span>MERN Stack Mini Project &bull; Academic Session 2026</span>
+            <span class="page-number">Page 7 of 30</span>
+        </div>
+    </div>
+    
+
+    <div class="page" id="page-8">
+        <div class="page-header">
+            <span class="brand">Medical Camp Registration Portal &bull; SIH 2025</span>
+            <span>CHAPTER 3: SYSTEM ARCHITECTURE</span>
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">CHAPTER 3: MERN SYSTEM ARCHITECTURE</h2>
+            <div class="page-subtitle">3-Tier Decoupled Client-Server-Cloud Model</div>
+            
+        <div style="padding: 10px 0;">
+            <p style="font-size: 13px; line-height: 1.7; color: #334155; text-align: justify; margin-bottom: 14px;">
+                The Medical Camp Registration Portal is structured around the classical industry-standard <strong>3-Tier Decoupled Architecture</strong>. Each tier operates autonomously, exchanging structured JSON over secure HTTP communication channels.
+            </p>
+
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; padding: 16px; margin-bottom: 18px; text-align: center;">
+                <div style="font-size: 12px; font-weight: 800; color: #475569; text-transform: uppercase; margin-bottom: 12px;">MERN 3-Tier Layered Architecture Diagram</div>
+                <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+                    <div style="flex: 1; background: #e0f2fe; border: 2px solid #0284c7; border-radius: 8px; padding: 12px;">
+                        <strong style="color: #0369a1; font-size: 13px; display: block;">PRESENTATION TIER</strong>
+                        <span style="font-size: 11.5px; color: #0c4a6e;">React 19 &bull; Vite 8 &bull; Tailwind CSS</span>
+                        <div style="font-size: 10.5px; color: #475569; margin-top: 4px;">Single Page App (Browser Client)</div>
+                    </div>
+                    <div style="font-size: 18px; color: #64748b; font-weight: bold;">&harr;</div>
+                    <div style="flex: 1; background: #fef3c7; border: 2px solid #d97706; border-radius: 8px; padding: 12px;">
+                        <strong style="color: #b45309; font-size: 13px; display: block;">APPLICATION TIER</strong>
+                        <span style="font-size: 11.5px; color: #78350f;">Node.js v24 &bull; Express.js 5</span>
+                        <div style="font-size: 10.5px; color: #475569; margin-top: 4px;">REST API & Auth Middleware</div>
+                    </div>
+                    <div style="font-size: 18px; color: #64748b; font-weight: bold;">&harr;</div>
+                    <div style="flex: 1; background: #dcfce7; border: 2px solid #16a34a; border-radius: 8px; padding: 12px;">
+                        <strong style="color: #15803d; font-size: 13px; display: block;">PERSISTENCE TIER</strong>
+                        <span style="font-size: 11.5px; color: #14532d;">MongoDB Atlas Cloud</span>
+                        <div style="font-size: 10.5px; color: #475569; margin-top: 4px;">Mongoose Relational Schemas</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="font-size: 14px; font-weight: 800; color: #0f172a; text-transform: uppercase; margin-bottom: 8px;">Detailed Component Responsibilities</h3>
+            <div style="font-size: 12.5px; line-height: 1.7; color: #334155;">
+                <p style="margin-bottom: 8px;">
+                    <strong>1. Presentation Tier (React.js Client):</strong> Runs directly within the user's browser. Employs client-side routing via React Router v7, manages reactive state with <code>useState</code> and <code>useEffect</code>, encapsulates global authentication via <code>AuthContext</code>, and renders high-priority alerts using React Portals.
+                </p>
+                <p style="margin-bottom: 8px;">
+                    <strong>2. Application Tier (Express.js REST Engine):</strong> Handles incoming HTTP requests, enforces Cross-Origin Resource Sharing (CORS) policies, parses incoming JSON payloads, validates parameters, queries registered doctors, and protects sensitive operations with JWT Bearer token authentication.
+                </p>
+                <p style="margin: 0;">
+                    <strong>3. Persistence Tier (MongoDB Atlas Cloud):</strong> Fully managed cloud database cluster maintaining strict ACID transaction guarantees for registration counters and storing data exclusively across three lean collections without extraneous or unneeded fields.
+                </p>
+            </div>
+        </div>
+        
+        </div>
+        <div class="page-footer">
+            <span>MERN Stack Mini Project &bull; Academic Session 2026</span>
+            <span class="page-number">Page 8 of 30</span>
+        </div>
+    </div>
+    
+
+    <div class="page" id="page-9">
+        <div class="page-header">
+            <span class="brand">Medical Camp Registration Portal &bull; SIH 2025</span>
+            <span>CHAPTER 4: DATABASE DESIGN</span>
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">CHAPTER 4: MONGODB DATABASE DESIGN (USERS)</h2>
+            <div class="page-subtitle">Strict 3-Collection Architecture: Collection 1 Specifications</div>
+            
+        <div style="padding: 10px 0;">
+            <h3 style="font-size: 15px; font-weight: 800; color: #0f172a; text-transform: uppercase; margin-bottom: 10px;">4.1 The Strict 3-Collection Database Architecture</h3>
+            <p style="font-size: 13px; line-height: 1.75; color: #334155; text-align: justify; margin-bottom: 14px;">
+                A defining technical architectural constraint of this project is that the database must store <strong>strictly three collections</strong> and <strong>strictly specified attributes</strong>—with zero extraneous metadata, timestamps, or version keys (<code>__v</code>). Furthermore, per explicit client specifications, user passwords are stored as plain text unencrypted to satisfy lightweight academic verification requirements.
+            </p>
+
+            <h3 style="font-size: 14px; font-weight: 800; color: #0d9488; text-transform: uppercase; margin-bottom: 8px;">Collection 1: Users</h3>
+            <p style="font-size: 12.5px; color: #475569; margin-bottom: 10px;">Stores authentication and profile records for Administrators, Doctors, and Participants.</p>
+            
+            <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 16px;">
+                <thead>
+                    <tr style="background: #0d9488; color: white;">
+                        <th style="padding: 6px 10px; text-align: left; border: 1px solid #0f766e;">Attribute Name</th>
+                        <th style="padding: 6px 10px; text-align: left; border: 1px solid #0f766e; width: 15%;">Data Type</th>
+                        <th style="padding: 6px 10px; text-align: left; border: 1px solid #0f766e; width: 18%;">Constraint</th>
+                        <th style="padding: 6px 10px; text-align: left; border: 1px solid #0f766e;">Description & Sample Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td style="padding: 5px 10px; border: 1px solid #e2e8f0; font-family: monospace; font-weight: bold;">userId</td><td style="padding: 5px 10px; border: 1px solid #e2e8f0;">String</td><td style="padding: 5px 10px; border: 1px solid #e2e8f0; color: #b91c1c; font-weight: bold;">Primary Key (Unique)</td><td style="padding: 5px 10px; border: 1px solid #e2e8f0;">Unique ID (e.g. <code>"USR-DOC-001"</code> or <code>"ADM-001"</code>)</td></tr>
+                    <tr style="background: #f8fafc;"><td style="padding: 5px 10px; border: 1px solid #e2e8f0; font-family: monospace; font-weight: bold;">name</td><td style="padding: 5px 10px; border: 1px solid #e2e8f0;">String</td><td style="padding: 5px 10px; border: 1px solid #e2e8f0; color: #b91c1c; font-weight: bold;">Required</td><td style="padding: 5px 10px; border: 1px solid #e2e8f0;">Full legal/professional name (e.g. <code>"Dr. Anil Kumar"</code>)</td></tr>
+                    <tr><td style="padding: 5px 10px; border: 1px solid #e2e8f0; font-family: monospace; font-weight: bold;">email</td><td style="padding: 5px 10px; border: 1px solid #e2e8f0;">String</td><td style="padding: 5px 10px; border: 1px solid #e2e8f0; color: #b91c1c; font-weight: bold;">Unique, Required</td><td style="padding: 5px 10px; border: 1px solid #e2e8f0;">Official contact email (e.g. <code>"admin@camp.org"</code>)</td></tr>
+                    <tr style="background: #f8fafc;"><td style="padding: 5px 10px; border: 1px solid #e2e8f0; font-family: monospace; font-weight: bold;">password</td><td style="padding: 5px 10px; border: 1px solid #e2e8f0;">String</td><td style="padding: 5px 10px; border: 1px solid #e2e8f0; color: #b91c1c; font-weight: bold;">Required</td><td style="padding: 5px 10px; border: 1px solid #e2e8f0;">Stored as plain text (e.g. <code>"Admin@2026"</code>)</td></tr>
+                    <tr><td style="padding: 5px 10px; border: 1px solid #e2e8f0; font-family: monospace; font-weight: bold;">role</td><td style="padding: 5px 10px; border: 1px solid #e2e8f0;">String</td><td style="padding: 5px 10px; border: 1px solid #e2e8f0; color: #b91c1c; font-weight: bold;">Enum</td><td style="padding: 5px 10px; border: 1px solid #e2e8f0;">Permitted: <code>"admin"</code>, <code>"doctor"</code>, <code>"participant"</code></td></tr>
+                </tbody>
+            </table>
+
+            <h4 style="font-size: 13px; font-weight: 800; color: #1e293b; margin-bottom: 6px;">Mongoose Schema Definition (user.js)</h4>
+            <div style="background: #0f172a; color: #e2e8f0; padding: 12px; border-radius: 8px; font-family: monospace; font-size: 11px; line-height: 1.5; overflow-x: auto;">
+const userSchema = new mongoose.Schema({<br/>
+&nbsp;&nbsp;userId: { type: String, required: true, unique: true },<br/>
+&nbsp;&nbsp;name: { type: String, required: true },<br/>
+&nbsp;&nbsp;email: { type: String, required: true, unique: true },<br/>
+&nbsp;&nbsp;password: { type: String, required: true },<br/>
+&nbsp;&nbsp;role: { type: String, enum: ['participant', 'doctor', 'admin'], default: 'participant' }<br/>
+}, { versionKey: false, timestamps: false });
+            </div>
+        </div>
+        
+        </div>
+        <div class="page-footer">
+            <span>MERN Stack Mini Project &bull; Academic Session 2026</span>
+            <span class="page-number">Page 9 of 30</span>
+        </div>
+    </div>
+    
+
+    <div class="page" id="page-10">
+        <div class="page-header">
+            <span class="brand">Medical Camp Registration Portal &bull; SIH 2025</span>
+            <span>CHAPTER 4: DATABASE DESIGN</span>
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">CHAPTER 4: DATABASE DESIGN (CAMPS & REGS)</h2>
+            <div class="page-subtitle">Strict 3-Collection Architecture: Collections 2 & 3</div>
+            
+        <div style="padding: 10px 0;">
+            <h3 style="font-size: 14px; font-weight: 800; color: #0d9488; text-transform: uppercase; margin-bottom: 6px;">Collection 2: MedicalCamps</h3>
+            <p style="font-size: 12px; color: #475569; margin-bottom: 8px;">Stores healthcare camp events created and managed by the administrator.</p>
+            <table style="width: 100%; border-collapse: collapse; font-size: 11.5px; margin-bottom: 14px;">
+                <thead>
+                    <tr style="background: #1e293b; color: white;">
+                        <th style="padding: 5px 8px; text-align: left; border: 1px solid #334155;">Attribute</th>
+                        <th style="padding: 5px 8px; text-align: left; border: 1px solid #334155; width: 14%;">Type</th>
+                        <th style="padding: 5px 8px; text-align: left; border: 1px solid #334155;">Constraint & Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td style="padding: 4px 8px; border: 1px solid #e2e8f0; font-family: monospace; font-weight: bold;">campId</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">String</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">Unique Identifier (e.g. <code>"CMP-2026-1001"</code>)</td></tr>
+                    <tr style="background: #f8fafc;"><td style="padding: 4px 8px; border: 1px solid #e2e8f0; font-family: monospace; font-weight: bold;">campName</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">String</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">Required descriptive title (e.g. <code>"Comprehensive Eye Screening"</code>)</td></tr>
+                    <tr><td style="padding: 4px 8px; border: 1px solid #e2e8f0; font-family: monospace; font-weight: bold;">campType</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">String</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">Camp category (e.g. <code>"Eye Camp"</code>, <code>"General Health"</code>, <code>"Dental Camp"</code>)</td></tr>
+                    <tr style="background: #f8fafc;"><td style="padding: 4px 8px; border: 1px solid #e2e8f0; font-family: monospace; font-weight: bold;">campDate</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">String</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">ISO Date string (YYYY-MM-DD)</td></tr>
+                    <tr><td style="padding: 4px 8px; border: 1px solid #e2e8f0; font-family: monospace; font-weight: bold;">venue</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">String</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">Physical location (e.g. <code>"Auditorium Block A"</code>)</td></tr>
+                    <tr style="background: #f8fafc;"><td style="padding: 4px 8px; border: 1px solid #e2e8f0; font-family: monospace; font-weight: bold;">doctorName</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">String</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0; color: #b91c1c; font-weight: bold;">Validated against Users collection (role: 'doctor')</td></tr>
+                    <tr><td style="padding: 4px 8px; border: 1px solid #e2e8f0; font-family: monospace; font-weight: bold;">maximumParticipants</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">Number</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">Positive integer slot capacity limit (e.g. <code>100</code>)</td></tr>
+                </tbody>
+            </table>
+
+            <h3 style="font-size: 14px; font-weight: 800; color: #0d9488; text-transform: uppercase; margin-bottom: 6px;">Collection 3: Registrations</h3>
+            <p style="font-size: 12px; color: #475569; margin-bottom: 8px;">Stores participant enrollment and attendance records linking Users and Camps.</p>
+            <table style="width: 100%; border-collapse: collapse; font-size: 11.5px; margin-bottom: 14px;">
+                <thead>
+                    <tr style="background: #1e293b; color: white;">
+                        <th style="padding: 5px 8px; text-align: left; border: 1px solid #334155;">Attribute</th>
+                        <th style="padding: 5px 8px; text-align: left; border: 1px solid #334155; width: 14%;">Type</th>
+                        <th style="padding: 5px 8px; text-align: left; border: 1px solid #334155;">Constraint & Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td style="padding: 4px 8px; border: 1px solid #e2e8f0; font-family: monospace; font-weight: bold;">registrationId</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">String</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">Unique Identifier (e.g. <code>"REG-2026-9042"</code>)</td></tr>
+                    <tr style="background: #f8fafc;"><td style="padding: 4px 8px; border: 1px solid #e2e8f0; font-family: monospace; font-weight: bold;">participantId</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">String</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">References <code>Users.userId</code></td></tr>
+                    <tr><td style="padding: 4px 8px; border: 1px solid #e2e8f0; font-family: monospace; font-weight: bold;">campId</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">String</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">References <code>MedicalCamps.campId</code></td></tr>
+                    <tr style="background: #f8fafc;"><td style="padding: 4px 8px; border: 1px solid #e2e8f0; font-family: monospace; font-weight: bold;">registrationDate</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">String</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">Booking timestamp date (YYYY-MM-DD)</td></tr>
+                    <tr><td style="padding: 4px 8px; border: 1px solid #e2e8f0; font-family: monospace; font-weight: bold;">registrationStatus</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">String</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">Enum: <code>"Registered"</code>, <code>"Attended"</code>, <code>"Cancelled"</code></td></tr>
+                </tbody>
+            </table>
+            
+            <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 10px; font-size: 11.5px; color: #166534;">
+                <strong>Strict Schema Guarantee:</strong> Both models specify <code>{ versionKey: false, timestamps: false }</code>. No extra fields such as symptoms, emergency phone numbers, or metadata are stored in MongoDB Atlas, strictly satisfying client constraints.
+            </div>
+        </div>
+        
+        </div>
+        <div class="page-footer">
+            <span>MERN Stack Mini Project &bull; Academic Session 2026</span>
+            <span class="page-number">Page 10 of 30</span>
+        </div>
+    </div>
+    
+
+    <div class="page" id="page-11">
+        <div class="page-header">
+            <span class="brand">Medical Camp Registration Portal &bull; SIH 2025</span>
+            <span>CHAPTER 5: SYSTEM MODULES</span>
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">CHAPTER 5: SYSTEM MODULES (MODULES 1 TO 3)</h2>
+            <div class="page-subtitle">Participant Registration, Authentication & Camp Management</div>
+            
+        <div style="padding: 10px 0;">
+            <p style="font-size: 13px; line-height: 1.7; color: #334155; text-align: justify; margin-bottom: 14px;">
+                The functional requirements specified in the project problem statement are systematically decomposed into seven dedicated functional modules. Modules 1 through 3 govern identity establishment and administrative event scheduling.
+            </p>
+
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #0d9488; border-radius: 8px; padding: 12px; margin-bottom: 14px;">
+                <h4 style="font-size: 13.5px; font-weight: 800; color: #0f766e; margin: 0 0 6px 0;">MODULE 1: PARTICIPANT & DOCTOR REGISTRATION</h4>
+                <p style="font-size: 12px; line-height: 1.6; color: #334155; margin: 0 0 8px 0;">
+                    Enables new users to self-register into the system. Features client-side validation for mandatory fields (Name, Email, Password) and role selection toggle between <strong>Participant</strong> and <strong>Doctor</strong>.
+                </p>
+                <div style="background: #ffffff; padding: 8px; border-radius: 6px; font-size: 11.5px; color: #475569; border: 1px solid #cbd5e1;">
+                    <strong>Security Enforcement:</strong> Any attempt to register with <code>role: "admin"</code> via the registration form or raw API request is intercepted by <code>authRoutes.js</code> and rejected with <code>HTTP 403 Forbidden</code>: <em>"Admin registration is prohibited. Only Participant and Doctor registrations are supported."</em>
+                </div>
+            </div>
+
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #3b82f6; border-radius: 8px; padding: 12px; margin-bottom: 14px;">
+                <h4 style="font-size: 13.5px; font-weight: 800; color: #1d4ed8; margin: 0 0 6px 0;">MODULE 2: LOGIN AUTHENTICATION & SESSION MANAGEMENT</h4>
+                <p style="font-size: 12px; line-height: 1.6; color: #334155; margin: 0 0 8px 0;">
+                    Facilitates role-aware login for registered participants and medical doctors. Validates email and unencrypted plain-text password against MongoDB Atlas. On successful authentication, issues a JSON Web Token (JWT) and sets the global <code>useAuth</code> session.
+                </p>
+                <div style="background: #ffffff; padding: 8px; border-radius: 6px; font-size: 11.5px; color: #475569; border: 1px solid #cbd5e1;">
+                    <strong>Master Admin Channel:</strong> Separate dedicated authentication endpoint (<code>POST /api/admin-login</code>) verifying the master password (<code>"Admin@2026"</code>) exclusively for the single administrator (<code>ADM-001</code>).
+                </div>
+            </div>
+
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px; margin-bottom: 0;">
+                <h4 style="font-size: 13.5px; font-weight: 800; color: #b45309; margin: 0 0 6px 0;">MODULE 3: MEDICAL CAMP MANAGEMENT (ADMIN CRUD)</h4>
+                <p style="font-size: 12px; line-height: 1.6; color: #334155; margin: 0 0 8px 0;">
+                    Provides administrative command over medical camp operations. Admins can schedule new camps, update timings and venues, adjust maximum participant limits, and cancel obsolete events.
+                </p>
+                <div style="background: #ffffff; padding: 8px; border-radius: 6px; font-size: 11.5px; color: #475569; border: 1px solid #cbd5e1;">
+                    <strong>Doctor Verification Gate:</strong> Camp creation requires assigning an attending physician. The UI dynamically loads registered doctors from <code>GET /api/doctors</code>, while the server validates that the doctor exists in the <code>Users</code> collection with <code>role: "doctor"</code> before saving.
+                </div>
+            </div>
+        </div>
+        
+        </div>
+        <div class="page-footer">
+            <span>MERN Stack Mini Project &bull; Academic Session 2026</span>
+            <span class="page-number">Page 11 of 30</span>
+        </div>
+    </div>
+    
+
+    <div class="page" id="page-12">
+        <div class="page-header">
+            <span class="brand">Medical Camp Registration Portal &bull; SIH 2025</span>
+            <span>CHAPTER 5: SYSTEM MODULES</span>
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">CHAPTER 5: SYSTEM MODULES (MODULES 4 TO 7)</h2>
+            <div class="page-subtitle">Camp Registration, Tracking & Role-Based Dashboards</div>
+            
+        <div style="padding: 10px 0;">
+            <p style="font-size: 13px; line-height: 1.7; color: #334155; text-align: justify; margin-bottom: 14px;">
+                Modules 4 through 7 govern user interactions, status lifecycles, and analytical dashboard reporting.
+            </p>
+
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #10b981; border-radius: 8px; padding: 12px; margin-bottom: 14px;">
+                <h4 style="font-size: 13.5px; font-weight: 800; color: #047857; margin: 0 0 6px 0;">MODULE 4: CAMP REGISTRATION & SLOT ALLOCATION</h4>
+                <p style="font-size: 12px; line-height: 1.6; color: #334155; margin: 0 0 8px 0;">
+                    Empowers authenticated participants to browse scheduled camps with live capacity indicators. Participants can click "Register Now" to trigger a confirmation modal.
+                </p>
+                <div style="background: #ffffff; padding: 8px; border-radius: 6px; font-size: 11.5px; color: #475569; border: 1px solid #cbd5e1;">
+                    <strong>Concurrency & Overbooking Prevention:</strong> Computes available slots dynamically (<code>maximumParticipants - activeRegistrations</code>). Prevents duplicate enrollment by verifying <code>participantId</code> and <code>campId</code> uniqueness before persisting the record.
+                </div>
+            </div>
+
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #8b5cf6; border-radius: 8px; padding: 12px; margin-bottom: 14px;">
+                <h4 style="font-size: 13.5px; font-weight: 800; color: #6d28d9; margin: 0 0 6px 0;">MODULE 5: REGISTRATION STATUS & DIGITAL TOKEN PASS</h4>
+                <p style="font-size: 12px; line-height: 1.6; color: #334155; margin: 0 0 8px 0;">
+                    Tracks the state of each booking across three formal statuses: <code>"Registered"</code>, <code>"Attended"</code>, and <code>"Cancelled"</code>. Generates printable digital tokens (<code>TKN-001</code>) with consultation instructions.
+                </p>
+            </div>
+
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #06b6d4; border-radius: 8px; padding: 12px; margin-bottom: 14px;">
+                <h4 style="font-size: 13.5px; font-weight: 800; color: #0e7490; margin: 0 0 6px 0;">MODULE 6: PARTICIPANT DASHBOARD & HISTORY</h4>
+                <p style="font-size: 12px; line-height: 1.6; color: #334155; margin: 0 0 8px 0;">
+                    A personalized portal for participants displaying active health camp enrollments, historical consultation slips, camp date reminders, and quick cancellation controls.
+                </p>
+            </div>
+
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #64748b; border-radius: 8px; padding: 12px; margin-bottom: 0;">
+                <h4 style="font-size: 13.5px; font-weight: 800; color: #334155; margin: 0 0 6px 0;">MODULE 7: ADMIN & DOCTOR DASHBOARDS</h4>
+                <p style="font-size: 12px; line-height: 1.6; color: #334155; margin: 0 0 8px 0;">
+                    <strong>Admin Dashboard:</strong> Real-time analytical widgets showing Total Camps Organized, Active Registrations, Verified Doctors, and Capacity Utilization.<br/>
+                    <strong>Doctor Dashboard:</strong> Filtered schedule view displaying only camps where the logged-in doctor is the designated attending physician, with one-click attendance marking.
+                </p>
+            </div>
+        </div>
+        
+        </div>
+        <div class="page-footer">
+            <span>MERN Stack Mini Project &bull; Academic Session 2026</span>
+            <span class="page-number">Page 12 of 30</span>
+        </div>
+    </div>
+    
+
+    <div class="page" id="page-13">
+        <div class="page-header">
+            <span class="brand">Medical Camp Registration Portal &bull; SIH 2025</span>
+            <span>CHAPTER 6: WORKING PRINCIPLE</span>
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">CHAPTER 6: WORKING PRINCIPLE & SYSTEM WORKFLOW</h2>
+            <div class="page-subtitle">End-to-End Operational Lifecycle & Sequence</div>
+            
+        <div style="padding: 10px 0;">
+            <p style="font-size: 13px; line-height: 1.7; color: #334155; text-align: justify; margin-bottom: 14px;">
+                The operational flow follows a coordinated nine-step sequence connecting the administrator, participant, doctor, and MongoDB Atlas database:
+            </p>
+
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 10px; padding: 14px; margin-bottom: 16px;">
+                <div style="font-size: 12.5px; font-weight: 800; color: #0f172a; text-transform: uppercase; margin-bottom: 10px;">Step-by-Step Execution Lifecycle:</div>
+                <ol style="font-size: 12px; line-height: 1.75; color: #334155; margin: 0; padding-left: 18px;">
+                    <li><strong>Admin Portal Unlock:</strong> Admin clicks the top-level "Admin" button on the navigation bar. Enters the master password <code>"Admin@2026"</code> in the centered security access modal.</li>
+                    <li><strong>Doctor Roster Seeding:</strong> Specialist doctors register through the portal (<code>role: "doctor"</code>), creating verified user profiles in the <code>Users</code> collection.</li>
+                    <li><strong>Medical Camp Creation:</strong> Admin schedules a new camp by selecting camp type, venue, date, capacity quota, and an assigned doctor from the database-driven doctor dropdown.</li>
+                    <li><strong>Database Validation & Persistence:</strong> Express validates that the selected doctor exists in <code>Users</code>. On success, persists the 7-attribute camp document in <code>MedicalCamps</code>.</li>
+                    <li><strong>Participant Onboarding:</strong> Participant signs up with basic profile info (<code>role: "participant"</code>) and logs into the application.</li>
+                    <li><strong>Camp Discovery & Slot Booking:</strong> Participant browses upcoming camps, checks remaining capacity slots, and registers for their preferred camp.</li>
+                    <li><strong>Atomic Registration:</strong> MongoDB Atlas saves the 5-attribute registration document (<code>registrationStatus: "Registered"</code>) and generates a digital token pass.</li>
+                    <li><strong>Clinical Consultation & Attendance:</strong> On the day of the camp, the assigned doctor logs into their Doctor Dashboard, reviews the patient list, and marks attendance (<code>"Attended"</code>).</li>
+                    <li><strong>Status Verification & Reporting:</strong> Participants track attendance status live, while the admin reviews aggregate attendance metrics and camp performance reports.</li>
+                </ol>
+            </div>
+
+            <div style="background: #e0f2fe; border-left: 4px solid #0284c7; padding: 10px 14px; border-radius: 6px; font-size: 12px; color: #0369a1;">
+                <strong>Architectural Guarantee:</strong> Every transaction maintains complete referential integrity between <code>Users.userId</code>, <code>MedicalCamps.campId</code>, and <code>Registrations.participantId</code>.
+            </div>
+        </div>
+        
+        </div>
+        <div class="page-footer">
+            <span>MERN Stack Mini Project &bull; Academic Session 2026</span>
+            <span class="page-number">Page 13 of 30</span>
+        </div>
+    </div>
+    
+
+    <div class="page" id="page-14">
+        <div class="page-header">
+            <span class="brand">Medical Camp Registration Portal &bull; SIH 2025</span>
+            <span>CHAPTER 7: FRONTEND IMPLEMENTATION</span>
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">CHAPTER 7: REACT FRONTEND ARCHITECTURE</h2>
+            <div class="page-subtitle">Components, JSX, Virtual DOM & Routing (v7)</div>
+            
+        <div style="padding: 10px 0;">
+            <p style="font-size: 13px; line-height: 1.7; color: #334155; text-align: justify; margin-bottom: 14px;">
+                The client interface is engineered using <strong>React 19</strong> powered by the <strong>Vite 8</strong> next-generation build tool and styled with <strong>Tailwind CSS v4</strong>. The frontend leverages modern declarative programming principles.
+            </p>
+
+            <h3 style="font-size: 14px; font-weight: 800; color: #0f172a; text-transform: uppercase; margin-bottom: 8px;">Core React Concepts Implemented</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 12px; line-height: 1.6; margin-bottom: 16px;">
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px;">
+                    <strong style="color: #0d9488; display: block; margin-bottom: 4px;">1. Modular Component Hierarchy</strong>
+                    Deconstructs UI into reusable, decoupled components: <code>Navbar</code>, <code>Footer</code>, <code>CampCard</code>, <code>StatusBadge</code>, <code>AdminAccessModal</code>, and <code>RegistrationSlipModal</code>.
+                </div>
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px;">
+                    <strong style="color: #0d9488; display: block; margin-bottom: 4px;">2. Declarative JSX & Virtual DOM</strong>
+                    Combines HTML structure and JavaScript logic seamlessly. Reconciles state updates via React's Virtual DOM diffing engine for sub-millisecond screen repaints.
+                </div>
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px;">
+                    <strong style="color: #0d9488; display: block; margin-bottom: 4px;">3. Unidirectional Props Data Flow</strong>
+                    Parent page components pass camp metadata, status values, and callback triggers down to child card and modal elements with strict immutability.
+                </div>
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px;">
+                    <strong style="color: #0d9488; display: block; margin-bottom: 4px;">4. Client-Side Routing (React Router v7)</strong>
+                    Enables dynamic Single Page Application (SPA) navigation without browser page reloads. Includes public, protected, and role-authorized route guards.
+                </div>
+            </div>
+
+            <h3 style="font-size: 14px; font-weight: 800; color: #0f172a; text-transform: uppercase; margin-bottom: 8px;">Route Configuration Matrix (App.jsx)</h3>
+            <table style="width: 100%; border-collapse: collapse; font-size: 11.5px;">
+                <thead>
+                    <tr style="background: #1e293b; color: white;">
+                        <th style="padding: 5px 8px; text-align: left; border: 1px solid #334155; width: 22%;">Path</th>
+                        <th style="padding: 5px 8px; text-align: left; border: 1px solid #334155; width: 28%;">Page Component</th>
+                        <th style="padding: 5px 8px; text-align: left; border: 1px solid #334155; width: 20%;">Access Level</th>
+                        <th style="padding: 5px 8px; text-align: left; border: 1px solid #334155;">Functional Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td style="padding: 4px 8px; border: 1px solid #e2e8f0; font-family: monospace;">/</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">Home.jsx</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">Public</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">Hero banner, stats & upcoming camps</td></tr>
+                    <tr style="background: #f8fafc;"><td style="padding: 4px 8px; border: 1px solid #e2e8f0; font-family: monospace;">/register</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">Register.jsx</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">Public</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">Participant and Doctor registration</td></tr>
+                    <tr><td style="padding: 4px 8px; border: 1px solid #e2e8f0; font-family: monospace;">/login</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">Login.jsx</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">Public</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">Credential verification & JWT storage</td></tr>
+                    <tr style="background: #f8fafc;"><td style="padding: 4px 8px; border: 1px solid #e2e8f0; font-family: monospace;">/camps</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">MedicalCamps.jsx</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">Public / All</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">Camp directory with search and filters</td></tr>
+                    <tr><td style="padding: 4px 8px; border: 1px solid #e2e8f0; font-family: monospace;">/participant</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">ParticipantDashboard.jsx</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0; color: #0284c7; font-weight: bold;">Participant</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">Bookings, tokens and health passes</td></tr>
+                    <tr style="background: #f8fafc;"><td style="padding: 4px 8px; border: 1px solid #e2e8f0; font-family: monospace;">/admin</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">AdminDashboard.jsx</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0; color: #d97706; font-weight: bold;">Admin Only</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">Camp statistics and attendee roster</td></tr>
+                    <tr><td style="padding: 4px 8px; border: 1px solid #e2e8f0; font-family: monospace;">/admin/camps</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">ManageCamps.jsx</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0; color: #d97706; font-weight: bold;">Admin Only</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">Full CRUD management of medical camps</td></tr>
+                    <tr style="background: #f8fafc;"><td style="padding: 4px 8px; border: 1px solid #e2e8f0; font-family: monospace;">/doctor</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">DoctorDashboard.jsx</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0; color: #7c3aed; font-weight: bold;">Doctor Only</td><td style="padding: 4px 8px; border: 1px solid #e2e8f0;">Assigned camp dates & attendance updates</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        </div>
+        <div class="page-footer">
+            <span>MERN Stack Mini Project &bull; Academic Session 2026</span>
+            <span class="page-number">Page 14 of 30</span>
+        </div>
+    </div>
+    
+
+    <div class="page" id="page-15">
+        <div class="page-header">
+            <span class="brand">Medical Camp Registration Portal &bull; SIH 2025</span>
+            <span>CHAPTER 7: FRONTEND IMPLEMENTATION</span>
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">CHAPTER 7: ADVANCED HOOKS & REACT PORTALS</h2>
+            <div class="page-subtitle">State Management, Context API & Centered Modal Rendering</div>
+            
+        <div style="padding: 10px 0;">
+            <h3 style="font-size: 14px; font-weight: 800; color: #0f172a; text-transform: uppercase; margin-bottom: 8px;">State Management Hooks</h3>
+            <p style="font-size: 12.5px; line-height: 1.7; color: #334155; text-align: justify; margin-bottom: 12px;">
+                State in the frontend is managed deterministically through React's native hooks:
+            </p>
+            <ul style="font-size: 12px; line-height: 1.7; color: #334155; margin-bottom: 14px;">
+                <li><code>useState()</code>: Tracks local form inputs (e.g. camp details, login credentials, filters, modal open/close states).</li>
+                <li><code>useEffect()</code>: Orchestrates asynchronous data acquisition (e.g. loading camps from <code>api.getCamps()</code> and registered doctors from <code>api.getDoctors()</code> on component mount).</li>
+                <li><code>useContext(AuthContext)</code>: Distributes global user identity, authentication status, and token headers throughout the component tree without prop-drilling.</li>
+            </ul>
+
+            <h3 style="font-size: 14px; font-weight: 800; color: #0d9488; text-transform: uppercase; margin-bottom: 8px;">React Portal Implementation (AdminAccessModal.jsx)</h3>
+            <p style="font-size: 12.5px; line-height: 1.7; color: #334155; text-align: justify; margin-bottom: 12px;">
+                <strong>The Architectural Bug & Solution:</strong> The sticky navigation header (<code>&lt;header&gt;</code>) utilizes CSS backdrop-filter (<code>backdrop-blur-md</code>). Per official CSS specifications, any element possessing a <code>backdrop-filter</code> or <code>filter</code> becomes the containing block for all its <code>fixed</code> descendants. Consequently, rendering the Admin Modal directly inside <code>Navbar.jsx</code> trapped the modal within the 64-pixel header bar at the top of the screen.
+            </p>
+
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 12px; margin-bottom: 14px;">
+                <div style="font-size: 11.5px; font-weight: 800; color: #0f172a; text-transform: uppercase; margin-bottom: 6px;">Portal Solution Code (AdminAccessModal.jsx):</div>
+                <div style="background: #0f172a; color: #e2e8f0; padding: 10px; border-radius: 6px; font-family: monospace; font-size: 10.5px; line-height: 1.5;">
+import { createPortal } from 'react-dom';<br/><br/>
+export const AdminAccessModal = ({ isOpen, onClose }) => {<br/>
+&nbsp;&nbsp;if (!isOpen) return null;<br/>
+&nbsp;&nbsp;const modalContent = (<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div className="fixed inset-0 z-[99999] bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4"&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div className="bg-white rounded-3xl max-w-md w-full shadow-2xl p-6 my-auto"&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{/* Centered Admin Access Form */}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br/>
+&nbsp;&nbsp;);<br/>
+&nbsp;&nbsp;return createPortal(modalContent, document.body);<br/>
+};
+                </div>
+            </div>
+
+            <p style="font-size: 12px; line-height: 1.6; color: #475569; margin: 0;">
+                By delegating modal rendering to <code>document.body</code> via <code>createPortal</code>, the modal completely breaks free from the navbar's containing block and renders squarely in the <strong>exact vertical and horizontal center of the viewport</strong>.
+            </p>
+        </div>
+        
+        </div>
+        <div class="page-footer">
+            <span>MERN Stack Mini Project &bull; Academic Session 2026</span>
+            <span class="page-number">Page 15 of 30</span>
+        </div>
+    </div>
+    
+
+    <div class="page" id="page-16">
+        <div class="page-header">
+            <span class="brand">Medical Camp Registration Portal &bull; SIH 2025</span>
+            <span>CHAPTER 8: BACKEND IMPLEMENTATION</span>
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">CHAPTER 8: EXPRESS.JS BACKEND IMPLEMENTATION</h2>
+            <div class="page-subtitle">Server Pipelines, Middleware, Routing & DB Seeding</div>
+            
+        <div style="padding: 10px 0;">
+            <p style="font-size: 13px; line-height: 1.7; color: #334155; text-align: justify; margin-bottom: 14px;">
+                The backend service is powered by <strong>Express.js 5</strong> on <strong>Node.js v24</strong>. The server architecture prioritizes clean separation of concerns across configuration, middleware pipelines, domain routes, and cloud persistence.
+            </p>
+
+            <h3 style="font-size: 14px; font-weight: 800; color: #0f172a; text-transform: uppercase; margin-bottom: 8px;">Server Initialization Pipeline (server.js)</h3>
+            <div style="background: #0f172a; color: #e2e8f0; padding: 12px; border-radius: 8px; font-family: monospace; font-size: 10.5px; line-height: 1.5; margin-bottom: 16px;">
+const express = require("express");<br/>
+const path = require("path");<br/>
+const cors = require("cors");<br/>
+const dotenv = require("dotenv");<br/>
+const connectDB = require("./config/db");<br/>
+const seedDatabase = require("./config/seed");<br/><br/>
+// Safe absolute path resolution for environment variables<br/>
+dotenv.config({ path: path.join(__dirname, ".env") });<br/><br/>
+const app = express();<br/>
+app.use(cors());<br/>
+app.use(express.json());<br/><br/>
+// Modular REST routing<br/>
+app.use("/api", require("./routes/authRoutes"));<br/>
+app.use("/api", require("./routes/campRoute"));<br/><br/>
+// Connect to MongoDB Atlas & trigger idempotent seeding<br/>
+connectDB().then(async () => {<br/>
+&nbsp;&nbsp;await seedDatabase();<br/>
+});<br/><br/>
+app.listen(process.env.PORT || 5000, () => {<br/>
+&nbsp;&nbsp;console.log(`Server running on port ${process.env.PORT || 5000}`);<br/>
+});
+            </div>
+
+            <h3 style="font-size: 14px; font-weight: 800; color: #0f172a; text-transform: uppercase; margin-bottom: 8px;">Key Middleware Components</h3>
+            <ul style="font-size: 12px; line-height: 1.7; color: #334155; margin: 0; padding-left: 18px;">
+                <li><strong>CORS (Cross-Origin Resource Sharing):</strong> Grants access to incoming HTTP requests originating from the Vercel-deployed frontend domain and local development ports.</li>
+                <li><strong>JSON Body Parser:</strong> Parses incoming <code>application/json</code> payloads into native JavaScript request objects (<code>req.body</code>).</li>
+                <li><strong>authMiddleware.js:</strong> Intercepts protected routes (e.g. camp creation, updates, and cancellations), verifies the JWT signature, and attaches authenticated user identity to <code>req.user</code>.</li>
+            </ul>
+        </div>
+        
+        </div>
+        <div class="page-footer">
+            <span>MERN Stack Mini Project &bull; Academic Session 2026</span>
+            <span class="page-number">Page 16 of 30</span>
+        </div>
+    </div>
+    
+
+    <div class="page" id="page-17">
+        <div class="page-header">
+            <span class="brand">Medical Camp Registration Portal &bull; SIH 2025</span>
+            <span>CHAPTER 8: BACKEND IMPLEMENTATION</span>
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">CHAPTER 8: REST APIS (AUTH & DOCTORS)</h2>
+            <div class="page-subtitle">Specifications for POST /register, /login, /admin-login & GET /doctors</div>
+            
+        <div style="padding: 10px 0;">
+            <h3 style="font-size: 14px; font-weight: 800; color: #0d9488; text-transform: uppercase; margin-bottom: 8px;">1. User Registration (POST /api/register)</h3>
+            <p style="font-size: 12px; color: #334155; margin-bottom: 6px;">Creates a new Participant or Doctor profile in the <code>Users</code> collection.</p>
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; font-size: 11px; margin-bottom: 12px;">
+                <strong>Request Payload:</strong> <code>{ "userId": "USR-101", "name": "Dr. Anil Kumar", "email": "anil@camp.org", "password": "pass", "role": "doctor" }</code><br/>
+                <strong>Security Guard:</strong> If <code>role === "admin"</code>, server returns <code>HTTP 403 Forbidden</code>: <em>"Admin registration is prohibited. Only Participant and Doctor registrations are supported."</em><br/>
+                <strong>Success Response (201 Created):</strong> <code>{ "message": "User registered successfully", "user": { ... } }</code>
+            </div>
+
+            <h3 style="font-size: 14px; font-weight: 800; color: #0d9488; text-transform: uppercase; margin-bottom: 8px;">2. User Login (POST /api/login)</h3>
+            <p style="font-size: 12px; color: #334155; margin-bottom: 6px;">Authenticates participants and doctors, returning a signed JWT token.</p>
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; font-size: 11px; margin-bottom: 12px;">
+                <strong>Request Payload:</strong> <code>{ "email": "user@test.com", "password": "userpass" }</code><br/>
+                <strong>Validation:</strong> Compares unencrypted password string directly against MongoDB Atlas <code>Users</code> record.<br/>
+                <strong>Success Response (200 OK):</strong> <code>{ "token": "&lt;jwt_bearer_token&gt;", "user": { "userId": "USR-...", "name": "...", "role": "..." } }</code>
+            </div>
+
+            <h3 style="font-size: 14px; font-weight: 800; color: #0d9488; text-transform: uppercase; margin-bottom: 8px;">3. Master Admin Login (POST /api/admin-login)</h3>
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; font-size: 11px; margin-bottom: 12px;">
+                <strong>Request Payload:</strong> <code>{ "password": "Admin@2026" }</code><br/>
+                <strong>Validation:</strong> Finds single admin user (<code>role: 'admin'</code>). If password matches <code>"Admin@2026"</code>, issues admin token; otherwise rejects with <code>401 Unauthorized</code>: <em>"Invalid Admin Password. Access Denied."</em>
+            </div>
+
+            <h3 style="font-size: 14px; font-weight: 800; color: #0d9488; text-transform: uppercase; margin-bottom: 8px;">4. Fetch Registered Doctors (GET /api/doctors)</h3>
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; font-size: 11px; margin: 0;">
+                <strong>Query:</strong> <code>User.find({ role: 'doctor' }).select('userId name email')</code><br/>
+                <strong>Response (200 OK):</strong> Returns array of genuine registered doctors from MongoDB Atlas to populate the Admin camp creation dropdown.
+            </div>
+        </div>
+        
+        </div>
+        <div class="page-footer">
+            <span>MERN Stack Mini Project &bull; Academic Session 2026</span>
+            <span class="page-number">Page 17 of 30</span>
+        </div>
+    </div>
+    
+
+    <div class="page" id="page-18">
+        <div class="page-header">
+            <span class="brand">Medical Camp Registration Portal &bull; SIH 2025</span>
+            <span>CHAPTER 8: BACKEND IMPLEMENTATION</span>
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">CHAPTER 8: REST APIS (MEDICAL CAMPS CRUD)</h2>
+            <div class="page-subtitle">Specifications for GET, POST, PUT, DELETE /api/medicalCamps</div>
+            
+        <div style="padding: 10px 0;">
+            <p style="font-size: 13px; line-height: 1.7; color: #334155; text-align: justify; margin-bottom: 12px;">
+                Medical camp management routes implement complete CRUD operations on the <code>MedicalCamps</code> collection, strictly adhering to the 7-attribute document schema.
+            </p>
+
+            <table style="width: 100%; border-collapse: collapse; font-size: 11px; margin-bottom: 14px;">
+                <thead>
+                    <tr style="background: #1e293b; color: white;">
+                        <th style="padding: 6px 8px; text-align: left; border: 1px solid #334155; width: 15%;">Method & Route</th>
+                        <th style="padding: 6px 8px; text-align: left; border: 1px solid #334155; width: 12%;">Access</th>
+                        <th style="padding: 6px 8px; text-align: left; border: 1px solid #334155; width: 33%;">Payload / Parameters</th>
+                        <th style="padding: 6px 8px; text-align: left; border: 1px solid #334155;">Functional Behavior & Validation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0; font-family: monospace; font-weight: bold; color: #0284c7;">GET /medicalCamps</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">Public</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">Optional query filters (type, status)</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">Fetches all camps sorted chronologically. Enriches each camp with live registeredCount without altering DB.</td>
+                    </tr>
+                    <tr style="background: #f8fafc;">
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0; font-family: monospace; font-weight: bold; color: #16a34a;">POST /medicalCamps</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0; font-weight: bold; color: #d97706;">Admin (Auth)</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">JSON: campName, campType, campDate, venue, doctorName, maximumParticipants</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">Validates that doctorName exists in Users with role: 'doctor'. Rejects invalid doctors with 400. Saves 7-attribute doc.</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0; font-family: monospace; font-weight: bold; color: #d97706;">PUT /medicalCamps/:id</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0; font-weight: bold; color: #d97706;">Admin (Auth)</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">URL param: campId; Body: updated attributes</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">Updates camp venue, date, quota, or doctor. Re-validates doctorName if changed. Returns updated record.</td>
+                    </tr>
+                    <tr style="background: #f8fafc;">
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0; font-family: monospace; font-weight: bold; color: #dc2626;">DELETE /medicalCamps/:id</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0; font-weight: bold; color: #d97706;">Admin (Auth)</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">URL param: campId</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">Deletes camp from MedicalCamps and cascades cancellation to all associated registrations.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4 style="font-size: 12.5px; font-weight: 800; color: #0f172a; text-transform: uppercase; margin-bottom: 6px;">Doctor Validation Code Implementation (campRoute.js)</h4>
+            <div style="background: #0f172a; color: #e2e8f0; padding: 10px; border-radius: 6px; font-family: monospace; font-size: 10px; line-height: 1.4;">
+const doctorDoc = await User.findOne({<br/>
+&nbsp;&nbsp;role: "doctor",<br/>
+&nbsp;&nbsp;$or: [{ name: doctorName }, { name: new RegExp(`^${doctorName.trim()}$`, "i") }]<br/>
+});<br/>
+if (!doctorDoc) {<br/>
+&nbsp;&nbsp;return res.status(400).json({<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;message: `Doctor "${doctorName}" is not registered in the database. Please select a registered doctor.`<br/>
+&nbsp;&nbsp;});<br/>
+}
+            </div>
+        </div>
+        
+        </div>
+        <div class="page-footer">
+            <span>MERN Stack Mini Project &bull; Academic Session 2026</span>
+            <span class="page-number">Page 18 of 30</span>
+        </div>
+    </div>
+    
+
+    <div class="page" id="page-19">
+        <div class="page-header">
+            <span class="brand">Medical Camp Registration Portal &bull; SIH 2025</span>
+            <span>CHAPTER 8: BACKEND IMPLEMENTATION</span>
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">CHAPTER 8: REST APIS (REGISTRATIONS & ROSTER)</h2>
+            <div class="page-subtitle">Specifications for POST /registerCamp, GET, PUT & DELETE</div>
+            
+        <div style="padding: 10px 0;">
+            <p style="font-size: 13px; line-height: 1.7; color: #334155; text-align: justify; margin-bottom: 12px;">
+                Registration endpoints manage participant bookings, capacity enforcement, and clinical attendance rosters.
+            </p>
+
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px; margin-bottom: 12px;">
+                <h4 style="font-size: 12.5px; font-weight: 800; color: #0284c7; margin: 0 0 4px 0;">1. POST /api/registerCamp (Participant Enrollment)</h4>
+                <div style="font-size: 11px; line-height: 1.5; color: #334155;">
+                    <strong>Execution Steps:</strong><br/>
+                    a. Checks if <code>campId</code> exists in <code>MedicalCamps</code>.<br/>
+                    b. Counts active bookings for this camp; verifies <code>registeredCount &lt; camp.maximumParticipants</code> (returns <code>400</code> if full).<br/>
+                    c. Checks if participant is already registered for this camp (returns <code>400</code> if duplicate).<br/>
+                    d. Generates unique <code>registrationId</code> (e.g. <code>REG-2026-XXXX</code>) and saves document with <code>registrationStatus: "Registered"</code>.<br/>
+                    <strong>Response (201 Created):</strong> Returns registration object and generated token number.
+                </div>
+            </div>
+
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px; margin-bottom: 12px;">
+                <h4 style="font-size: 12.5px; font-weight: 800; color: #16a34a; margin: 0 0 4px 0;">2. GET /api/registrations (Fetch Attendance Rosters)</h4>
+                <div style="font-size: 11px; line-height: 1.5; color: #334155;">
+                    <strong>Query Filters:</strong> <code>participantId</code> (returns participant's personal registrations) or <code>campId</code> (returns attendee roster for a camp).<br/>
+                    <strong>Data Enrichment:</strong> Joins with <code>MedicalCamps</code> and <code>Users</code> to attach camp title, venue, and participant name for clean UI rendering.
+                </div>
+            </div>
+
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px; margin-bottom: 12px;">
+                <h4 style="font-size: 12.5px; font-weight: 800; color: #d97706; margin: 0 0 4px 0;">3. PUT /api/registrations/:id (Update Attendance Status)</h4>
+                <div style="font-size: 11px; line-height: 1.5; color: #334155;">
+                    <strong>Access:</strong> Admin or Attending Doctor.<br/>
+                    <strong>Payload:</strong> <code>{ "registrationStatus": "Attended" }</code><br/>
+                    <strong>Behavior:</strong> Marks participant as attended following on-site clinical consultation.
+                </div>
+            </div>
+
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px; margin: 0;">
+                <h4 style="font-size: 12.5px; font-weight: 800; color: #dc2626; margin: 0 0 4px 0;">4. DELETE /api/cancelRegistration/:id (Booking Cancellation)</h4>
+                <div style="font-size: 11px; line-height: 1.5; color: #334155;">
+                    <strong>Behavior:</strong> Sets <code>registrationStatus: "Cancelled"</code>, immediately relinquishing the reserved slot back to the camp's available capacity.
+                </div>
+            </div>
+        </div>
+        
+        </div>
+        <div class="page-footer">
+            <span>MERN Stack Mini Project &bull; Academic Session 2026</span>
+            <span class="page-number">Page 19 of 30</span>
+        </div>
+    </div>
+    
+
+    <div class="page" id="page-20">
+        <div class="page-header">
+            <span class="brand">Medical Camp Registration Portal &bull; SIH 2025</span>
+            <span>CHAPTER 9: UI & APPLICATION WALKTHROUGH</span>
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">CHAPTER 9: FRONTEND UI WALKTHROUGH (PAGES 1 - 4)</h2>
+            <div class="page-subtitle">Home, Register, Login & Participant Dashboard Walkthrough</div>
+            
+        <div style="padding: 10px 0;">
+            <p style="font-size: 13px; line-height: 1.7; color: #334155; text-align: justify; margin-bottom: 14px;">
+                The user interface is designed with a modern medical-grade aesthetic utilizing high-contrast teal, cyan, and amber palettes with intuitive responsive layouts.
+            </p>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px;">
+                    <div style="font-size: 13px; font-weight: 800; color: #0d9488; margin-bottom: 4px;">PAGE 1: HOME PAGE (Home.jsx)</div>
+                    <p style="font-size: 11.5px; line-height: 1.6; color: #475569; margin: 0 0 8px 0;">
+                        Serves as the public landing page. Features a prominent hero banner, quick statistics counter, featured upcoming camps carousel, and quick navigation links.
+                    </p>
+                    <ul style="font-size: 11px; color: #334155; margin: 0; padding-left: 14px; line-height: 1.5;">
+                        <li>Hero CTA: "Explore Medical Camps" & "Register Now"</li>
+                        <li>Live metrics: Total Camps, Doctors On Duty</li>
+                        <li>Responsive multi-device layout</li>
+                    </ul>
+                </div>
+
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px;">
+                    <div style="font-size: 13px; font-weight: 800; color: #0d9488; margin-bottom: 4px;">PAGE 2: REGISTER (Register.jsx)</div>
+                    <p style="font-size: 11.5px; line-height: 1.6; color: #475569; margin: 0 0 8px 0;">
+                        Clean registration form supporting two user types: Participant and Doctor.
+                    </p>
+                    <ul style="font-size: 11px; color: #334155; margin: 0; padding-left: 14px; line-height: 1.5;">
+                        <li>Role toggle pills: Participant vs. Doctor</li>
+                        <li>Prohibits Admin registration (returns 403 error)</li>
+                        <li>Input validation for email formatting and password</li>
+                        <li>Direct redirect to login upon completion</li>
+                    </ul>
+                </div>
+
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px;">
+                    <div style="font-size: 13px; font-weight: 800; color: #0d9488; margin-bottom: 4px;">PAGE 3: LOGIN (Login.jsx)</div>
+                    <p style="font-size: 11.5px; line-height: 1.6; color: #475569; margin: 0 0 8px 0;">
+                        Standard login portal for participants and doctors.
+                    </p>
+                    <ul style="font-size: 11px; color: #334155; margin: 0; padding-left: 14px; line-height: 1.5;">
+                        <li>Credentials validation against plain-text DB records</li>
+                        <li>One-click Demo Fill buttons for quick testing</li>
+                        <li>Role-aware routing redirect to respective dashboard</li>
+                        <li>Persistent JWT local storage handling</li>
+                    </ul>
+                </div>
+
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px;">
+                    <div style="font-size: 13px; font-weight: 800; color: #0d9488; margin-bottom: 4px;">PAGE 4: PARTICIPANT DASHBOARD</div>
+                    <p style="font-size: 11.5px; line-height: 1.6; color: #475569; margin: 0 0 8px 0;">
+                        Private command center for registered participants.
+                    </p>
+                    <ul style="font-size: 11px; color: #334155; margin: 0; padding-left: 14px; line-height: 1.5;">
+                        <li>Summary cards of active bookings & past checkups</li>
+                        <li>Upcoming camp schedule timeline</li>
+                        <li>Quick cancellation buttons</li>
+                        <li>One-click access to download digital token slips</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        </div>
+        <div class="page-footer">
+            <span>MERN Stack Mini Project &bull; Academic Session 2026</span>
+            <span class="page-number">Page 20 of 30</span>
+        </div>
+    </div>
+    
+
+    <div class="page" id="page-21">
+        <div class="page-header">
+            <span class="brand">Medical Camp Registration Portal &bull; SIH 2025</span>
+            <span>CHAPTER 9: UI & APPLICATION WALKTHROUGH</span>
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">CHAPTER 9: FRONTEND UI WALKTHROUGH (PAGES 5 - 9)</h2>
+            <div class="page-subtitle">Camp Catalog, Booking Modal, Admin & Doctor Dashboards</div>
+            
+        <div style="padding: 10px 0;">
+            <p style="font-size: 13px; line-height: 1.7; color: #334155; text-align: justify; margin-bottom: 14px;">
+                Pages 5 through 9 provide deep operational functionality for camp discovery, booking confirmation, administrative CRUD controls, and clinical attendance tracking.
+            </p>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px;">
+                    <div style="font-size: 13px; font-weight: 800; color: #0d9488; margin-bottom: 4px;">PAGE 5: MEDICAL CAMPS DIRECTORY</div>
+                    <p style="font-size: 11.5px; line-height: 1.6; color: #475569; margin: 0 0 6px 0;">
+                        Public browsing catalog listing all medical camps.
+                    </p>
+                    <ul style="font-size: 11px; color: #334155; margin: 0; padding-left: 14px; line-height: 1.5;">
+                        <li>Search bar for camp name, venue, or doctor</li>
+                        <li>Category filtering pills (General Health, Eye Camp, etc.)</li>
+                        <li>Live slot counters: "X slots left" / "Camp Full"</li>
+                    </ul>
+                </div>
+
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px;">
+                    <div style="font-size: 13px; font-weight: 800; color: #0d9488; margin-bottom: 4px;">PAGE 6: REGISTER FOR CAMP MODAL</div>
+                    <p style="font-size: 11.5px; line-height: 1.6; color: #475569; margin: 0 0 6px 0;">
+                        High-converting interactive registration popup.
+                    </p>
+                    <ul style="font-size: 11px; color: #334155; margin: 0; padding-left: 14px; line-height: 1.5;">
+                        <li>Summarizes camp date, venue, and assigned doctor</li>
+                        <li>Instant slot reservation confirmation</li>
+                        <li>Generates unique Token Slip (TKN-001)</li>
+                    </ul>
+                </div>
+
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px;">
+                    <div style="font-size: 13px; font-weight: 800; color: #0d9488; margin-bottom: 4px;">PAGE 7: MY REGISTRATIONS</div>
+                    <p style="font-size: 11.5px; line-height: 1.6; color: #475569; margin: 0 0 6px 0;">
+                        Participant history and verification management.
+                    </p>
+                    <ul style="font-size: 11px; color: #334155; margin: 0; padding-left: 14px; line-height: 1.5;">
+                        <li>Live status badges: "Registered", "Attended", "Cancelled"</li>
+                        <li>Printable Digital Registration Slip modal</li>
+                        <li>Self-service cancellation trigger</li>
+                    </ul>
+                </div>
+
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px;">
+                    <div style="font-size: 13px; font-weight: 800; color: #0d9488; margin-bottom: 4px;">PAGE 8: ADMIN DASHBOARD (/admin)</div>
+                    <p style="font-size: 11.5px; line-height: 1.6; color: #475569; margin: 0 0 6px 0;">
+                        Administrative analytics and operational overview.
+                    </p>
+                    <ul style="font-size: 11px; color: #334155; margin: 0; padding-left: 14px; line-height: 1.5;">
+                        <li>Key KPI cards: Total Camps, Active Registrations</li>
+                        <li>Participant roster table with search & filters</li>
+                        <li>Quick links to manage medical camps</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px;">
+                <div style="font-size: 13px; font-weight: 800; color: #0d9488; margin-bottom: 4px;">PAGE 9: MANAGE MEDICAL CAMPS & DOCTOR DASHBOARD</div>
+                <p style="font-size: 11.5px; line-height: 1.6; color: #475569; margin: 0 0 4px 0;">
+                    <strong>Manage Medical Camps (Admin):</strong> Add New Camp modal with dynamic doctor dropdown, venue editors, and capacity limit adjustments.<br/>
+                    <strong>Doctor Dashboard (/doctor):</strong> Doctor schedule displaying assigned camps and participant rosters with one-click "Mark Attended" attendance buttons.
+                </p>
+            </div>
+        </div>
+        
+        </div>
+        <div class="page-footer">
+            <span>MERN Stack Mini Project &bull; Academic Session 2026</span>
+            <span class="page-number">Page 21 of 30</span>
+        </div>
+    </div>
+    
+
+    <div class="page" id="page-22">
+        <div class="page-header">
+            <span class="brand">Medical Camp Registration Portal &bull; SIH 2025</span>
+            <span>CHAPTER 10: SECURITY ARCHITECTURE</span>
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">CHAPTER 10: SECURITY & ADMIN PROTECTION</h2>
+            <div class="page-subtitle">Single Admin Policy & Centered Security Access Modal</div>
+            
+        <div style="padding: 10px 0;">
+            <h3 style="font-size: 14px; font-weight: 800; color: #0f172a; text-transform: uppercase; margin-bottom: 10px;">10.1 Single Admin Architecture</h3>
+            <p style="font-size: 13px; line-height: 1.75; color: #334155; text-align: justify; margin-bottom: 14px;">
+                To prevent privilege escalation and administrative clutter, the portal enforces an uncompromised <strong>Single Administrator Rule</strong>:
+            </p>
+            <ul style="font-size: 12.5px; line-height: 1.7; color: #334155; margin-bottom: 16px;">
+                <li>The database contains <strong>exactly one administrator account</strong>: <code>userId: "ADM-001"</code>, <code>email: "admin@camp.org"</code>, <code>role: "admin"</code>.</li>
+                <li>Public registration with <code>role: "admin"</code> is strictly prohibited and intercepted at the Express route level with an immediate <code>HTTP 403 Forbidden</code> response.</li>
+                <li>The single admin account is initialized via an idempotent database seed script (<code>seed.js</code>) on server boot.</li>
+            </ul>
+
+            <h3 style="font-size: 14px; font-weight: 800; color: #0d9488; text-transform: uppercase; margin-bottom: 10px;">10.2 Top Navbar Admin Access & Master Password</h3>
+            <p style="font-size: 13px; line-height: 1.75; color: #334155; text-align: justify; margin-bottom: 14px;">
+                Instead of exposing an admin username/password form on the standard public login page, administrative entrance is isolated to a <strong>locked "Admin" button</strong> in the top navigation bar.
+            </p>
+
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 10px; padding: 14px; margin-bottom: 16px;">
+                <div style="font-size: 12px; font-weight: 800; color: #0f172a; text-transform: uppercase; margin-bottom: 6px;">Master Password Protocol:</div>
+                <div style="display: flex; gap: 16px; font-size: 12px; line-height: 1.6; color: #334155;">
+                    <div style="flex: 1;">
+                        <strong>Master Admin Password:</strong><br/>
+                        <code style="font-size: 13px; color: #b45309; font-weight: bold;">Admin@2026</code><br/>
+                        <span style="font-size: 11px; color: #64748b;">Known exclusively to the authorized system administrator.</span>
+                    </div>
+                    <div style="flex: 1;">
+                        <strong>Authentication Endpoint:</strong><br/>
+                        <code style="font-size: 12px; color: #0f766e;">POST /api/admin-login</code><br/>
+                        <span style="font-size: 11px; color: #64748b;">Directly verifies master password against DB.</span>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="font-size: 14px; font-weight: 800; color: #0f172a; text-transform: uppercase; margin-bottom: 8px;">10.3 Password Storage Policy</h3>
+            <p style="font-size: 12.5px; line-height: 1.7; color: #334155; text-align: justify; margin: 0;">
+                In strict adherence to the client's explicit project specification (<em>"password should be stored as it is in the database it should not be encrypted"</em>), passwords across all roles (Admin, Doctors, Participants) are stored as unencrypted plain text. While production banking applications use bcrypt hashing, this architectural design satisfies the exact academic verification rules specified for this MERN Stack mini project.
+            </p>
+        </div>
+        
+        </div>
+        <div class="page-footer">
+            <span>MERN Stack Mini Project &bull; Academic Session 2026</span>
+            <span class="page-number">Page 22 of 30</span>
+        </div>
+    </div>
+    
+
+    <div class="page" id="page-23">
+        <div class="page-header">
+            <span class="brand">Medical Camp Registration Portal &bull; SIH 2025</span>
+            <span>CHAPTER 11: DOCTOR VALIDATION</span>
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">CHAPTER 11: DOCTOR ASSIGNMENT VALIDATION</h2>
+            <div class="page-subtitle">Eliminating Orphan Doctor Entries via Database Gatekeeping</div>
+            
+        <div style="padding: 10px 0;">
+            <h3 style="font-size: 14px; font-weight: 800; color: #0f172a; text-transform: uppercase; margin-bottom: 10px;">11.1 The Orphan Doctor Problem</h3>
+            <p style="font-size: 13px; line-height: 1.75; color: #334155; text-align: justify; margin-bottom: 14px;">
+                In earlier iterations of the camp creation interface, the assigned doctor field was a free-form text input (<code>&lt;input type="text" /&gt;</code>). This allowed administrators to input arbitrary, fictitious doctor names (e.g. "Dr. John Doe" or typographical errors) who had no corresponding registered user account in the database. As a result, the Doctor Dashboard could not link camps to real doctors, and attendance could never be recorded.
+            </p>
+
+            <h3 style="font-size: 14px; font-weight: 800; color: #0d9488; text-transform: uppercase; margin-bottom: 10px;">11.2 Dual-Layer Validation Solution</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+                <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-top: 3px solid #0d9488; border-radius: 8px; padding: 12px;">
+                    <strong style="color: #0f766e; font-size: 12.5px; display: block; margin-bottom: 6px;">LAYER 1: FRONTEND DYNAMIC DROPDOWN</strong>
+                    <p style="font-size: 11.5px; line-height: 1.6; color: #334155; margin: 0 0 6px 0;">
+                        Replaced the free-text input with a reactive <code>&lt;select&gt;</code> dropdown in <code>ManageCamps.jsx</code>.
+                    </p>
+                    <ul style="font-size: 11px; color: #475569; margin: 0; padding-left: 14px; line-height: 1.5;">
+                        <li>Calls <code>api.getDoctors()</code> on modal open.</li>
+                        <li>Renders only genuine doctors from <code>GET /api/doctors</code>.</li>
+                        <li>Displays Doctor Name and Email for clarity.</li>
+                    </ul>
+                </div>
+
+                <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-top: 3px solid #d97706; border-radius: 8px; padding: 12px;">
+                    <strong style="color: #b45309; font-size: 12.5px; display: block; margin-bottom: 6px;">LAYER 2: BACKEND MONGOOSE GATEWAY</strong>
+                    <p style="font-size: 11.5px; line-height: 1.6; color: #334155; margin: 0 0 6px 0;">
+                        Server routes (<code>POST /medicalCamps</code> and <code>PUT /medicalCamps/:id</code>) enforce strict database queries.
+                    </p>
+                    <ul style="font-size: 11px; color: #475569; margin: 0; padding-left: 14px; line-height: 1.5;">
+                        <li>Executes case-insensitive regex query on <code>Users</code>.</li>
+                        <li>Verifies <code>role === "doctor"</code>.</li>
+                        <li>Rejects unregistered names with <code>HTTP 400 Bad Request</code>.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 style="font-size: 13.5px; font-weight: 800; color: #0f172a; text-transform: uppercase; margin-bottom: 6px;">Database Verification Query (campRoute.js)</h3>
+            <div style="background: #0f172a; color: #e2e8f0; padding: 10px; border-radius: 6px; font-family: monospace; font-size: 10.5px; line-height: 1.5;">
+const doctorDoc = await User.findOne({<br/>
+&nbsp;&nbsp;role: "doctor",<br/>
+&nbsp;&nbsp;$or: [<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{ name: doctorName },<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{ name: new RegExp(`^${doctorName.trim()}$`, "i") },<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{ userId: doctorName }<br/>
+&nbsp;&nbsp;]<br/>
+});<br/>
+if (!doctorDoc) {<br/>
+&nbsp;&nbsp;return res.status(400).json({<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;message: `Doctor "${doctorName}" is not registered in the database. Please select a registered doctor.`<br/>
+&nbsp;&nbsp;});<br/>
+}
+            </div>
+        </div>
+        
+        </div>
+        <div class="page-footer">
+            <span>MERN Stack Mini Project &bull; Academic Session 2026</span>
+            <span class="page-number">Page 23 of 30</span>
+        </div>
+    </div>
+    
+
+    <div class="page" id="page-24">
+        <div class="page-header">
+            <span class="brand">Medical Camp Registration Portal &bull; SIH 2025</span>
+            <span>CHAPTER 12: SYSTEM MODELING</span>
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">CHAPTER 12: DATA FLOW & SEQUENCE DIAGRAMS</h2>
+            <div class="page-subtitle">DFD Level 0, Level 1 & Interaction Sequence</div>
+            
+        <div style="padding: 10px 0;">
+            <h3 style="font-size: 14px; font-weight: 800; color: #0f172a; text-transform: uppercase; margin-bottom: 8px;">12.1 Data Flow Diagram (DFD Level 0 - Context Level)</h3>
+            <p style="font-size: 12.5px; line-height: 1.6; color: #334155; text-align: justify; margin-bottom: 12px;">
+                The context-level DFD models the high-level boundary of the Medical Camp Registration Portal, capturing the primary external entities and their major information flows:
+            </p>
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 12px; margin-bottom: 14px; text-align: center;">
+                <div style="font-size: 11px; font-family: monospace; color: #1e293b; line-height: 1.8;">
+                    [Participant] &rarr; (Register Profile / Book Camp Slot) &rarr; [ PORTAL ENGINE ] &rarr; (Digital Token Slip)<br/>
+                    [Admin] &rarr; (Master Password / Camp CRUD / Assign Doctor) &rarr; [ PORTAL ENGINE ] &rarr; (Roster & Analytics)<br/>
+                    [Doctor] &rarr; (Login / Update Attendance) &rarr; [ PORTAL ENGINE ] &rarr; (Consultation Status)
+                </div>
+            </div>
+
+            <h3 style="font-size: 14px; font-weight: 800; color: #0f172a; text-transform: uppercase; margin-bottom: 8px;">12.2 Camp Registration Sequence Diagram</h3>
+            <div style="background: #0f172a; color: #e2e8f0; padding: 12px; border-radius: 8px; font-family: monospace; font-size: 10px; line-height: 1.5; margin-bottom: 12px;">
+Participant             React UI                Express REST API        MongoDB Atlas<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;|                       |                          |                    |<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;|--- Click "Register" -&gt;|                          |                    |<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;|                       |-- POST /registerCamp ---&gt;|                    |<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;|                       |                          |-- Find Camp ------&gt;|<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;|                       |                          |&lt;- Camp details ----|<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;|                       |                          |-- Count Regs -----&gt;|<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;|                       |                          |&lt;- Active count ----|<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;|                       |                          |-- Check Duplicate -&gt;|<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;|                       |                          |&lt;- Is Duplicate? ---|<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;|                       |                          |-- Insert Reg Doc --&gt;|<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;|                       |                          |&lt;- Success (201) ---|<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;|                       |&lt;- 201 Created Token -----|                    |<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;|&lt;- Display Token Slip -|                          |                    |
+            </div>
+
+            <p style="font-size: 12px; line-height: 1.6; color: #475569; margin: 0;">
+                The sequence diagram clearly visualizes the transactional guarantees executed before confirming a slot: verifying camp existence, validating remaining capacity, preventing duplicate entries, and persisting the 5-attribute registration record.
+            </p>
+        </div>
+        
+        </div>
+        <div class="page-footer">
+            <span>MERN Stack Mini Project &bull; Academic Session 2026</span>
+            <span class="page-number">Page 24 of 30</span>
+        </div>
+    </div>
+    
+
+    <div class="page" id="page-25">
+        <div class="page-header">
+            <span class="brand">Medical Camp Registration Portal &bull; SIH 2025</span>
+            <span>CHAPTER 13: TESTING & QUALITY ASSURANCE</span>
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">CHAPTER 13: QA, TEST CASES & VERIFICATION</h2>
+            <div class="page-subtitle">Test Execution Matrix & Validation Results</div>
+            
+        <div style="padding: 10px 0;">
+            <p style="font-size: 13px; line-height: 1.7; color: #334155; text-align: justify; margin-bottom: 12px;">
+                A rigorous test suite covering functional, boundary, and security test cases was executed against the production deployment to ensure defect-free operation.
+            </p>
+
+            <table style="width: 100%; border-collapse: collapse; font-size: 11px; margin-bottom: 14px;">
+                <thead>
+                    <tr style="background: #1e293b; color: white;">
+                        <th style="padding: 6px 8px; text-align: left; border: 1px solid #334155; width: 10%;">Test ID</th>
+                        <th style="padding: 6px 8px; text-align: left; border: 1px solid #334155; width: 22%;">Scenario Description</th>
+                        <th style="padding: 6px 8px; text-align: left; border: 1px solid #334155; width: 28%;">Test Input Payload</th>
+                        <th style="padding: 6px 8px; text-align: left; border: 1px solid #334155; width: 28%;">Expected Outcome</th>
+                        <th style="padding: 6px 8px; text-align: center; border: 1px solid #334155; width: 12%;">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0; font-family: monospace; font-weight: bold;">TC-01</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">Prohibit Admin Registration</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">POST /register with <code>role: "admin"</code></td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">HTTP 403 Forbidden ("Admin registration is prohibited")</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0; text-align: center; color: #16a34a; font-weight: bold;">PASSED</td>
+                    </tr>
+                    <tr style="background: #f8fafc;">
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0; font-family: monospace; font-weight: bold;">TC-02</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">Doctor Self-Registration</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">POST /register with <code>role: "doctor"</code></td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">HTTP 201 Created & saved to Users</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0; text-align: center; color: #16a34a; font-weight: bold;">PASSED</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0; font-family: monospace; font-weight: bold;">TC-03</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">Reject Non-Existent Doctor</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">POST /medicalCamps with <code>"Dr. Fake Doctor"</code></td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">HTTP 400 Bad Request ("Doctor is not registered")</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0; text-align: center; color: #16a34a; font-weight: bold;">PASSED</td>
+                    </tr>
+                    <tr style="background: #f8fafc;">
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0; font-family: monospace; font-weight: bold;">TC-04</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">Create Camp with Real Doctor</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">POST /medicalCamps with <code>"Dr. Anil Kumar"</code></td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">HTTP 201 Created (7-attribute record persisted)</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0; text-align: center; color: #16a34a; font-weight: bold;">PASSED</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0; font-family: monospace; font-weight: bold;">TC-05</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">Master Admin Login Valid</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">POST /admin-login with <code>"Admin@2026"</code></td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">HTTP 200 OK & JWT token returned</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0; text-align: center; color: #16a34a; font-weight: bold;">PASSED</td>
+                    </tr>
+                    <tr style="background: #f8fafc;">
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0; font-family: monospace; font-weight: bold;">TC-06</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">Prevent Duplicate Booking</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">Same participant re-registers for camp</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">HTTP 400 Bad Request ("Already registered")</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0; text-align: center; color: #16a34a; font-weight: bold;">PASSED</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0; font-family: monospace; font-weight: bold;">TC-07</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">Max Capacity Reached Guard</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">Enrollment attempt when <code>count >= max</code></td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">HTTP 400 Bad Request ("Camp capacity reached")</td>
+                        <td style="padding: 5px 8px; border: 1px solid #e2e8f0; text-align: center; color: #16a34a; font-weight: bold;">PASSED</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 10px; font-size: 11.5px; color: #166534;">
+                <strong>Test Summary:</strong> 100% of functional test cases passed successfully with zero critical or blocker bugs identified.
+            </div>
+        </div>
+        
+        </div>
+        <div class="page-footer">
+            <span>MERN Stack Mini Project &bull; Academic Session 2026</span>
+            <span class="page-number">Page 25 of 30</span>
+        </div>
+    </div>
+    
+
+    <div class="page" id="page-26">
+        <div class="page-header">
+            <span class="brand">Medical Camp Registration Portal &bull; SIH 2025</span>
+            <span>CHAPTER 14: PERFORMANCE & OPTIMIZATION</span>
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">CHAPTER 14: PERFORMANCE & VITE OPTIMIZATION</h2>
+            <div class="page-subtitle">Sub-Second Bundling, Asset Compression & Connection Pooling</div>
+            
+        <div style="padding: 10px 0;">
+            <h3 style="font-size: 14px; font-weight: 800; color: #0f172a; text-transform: uppercase; margin-bottom: 10px;">14.1 Frontend Build Optimization with Vite 8</h3>
+            <p style="font-size: 13px; line-height: 1.75; color: #334155; text-align: justify; margin-bottom: 12px;">
+                Traditional Webpack-based bundling often requires 30 to 60 seconds of compilation time for full-stack applications. By migrating to <strong>Vite 8</strong> and <strong>ES modules</strong>, the build pipeline achieved superior performance:
+            </p>
+
+            <div style="background: #0f172a; color: #e2e8f0; padding: 12px; border-radius: 8px; font-family: monospace; font-size: 10.5px; line-height: 1.5; margin-bottom: 14px;">
+$ npm run build<br/>
+&gt; vite build<br/>
+vite v8.3.0 building client environment for production...<br/>
+transforming...<br/>
+&check; 1909 modules transformed.<br/>
+rendering chunks...<br/>
+dist/index.html &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.59 kB &vert; gzip: &nbsp;&nbsp;0.34 kB<br/>
+dist/assets/index-BU7YCEVK.css &nbsp;61.39 kB &vert; gzip: &nbsp;10.31 kB<br/>
+dist/assets/index-CwVWpVI7.js &nbsp;443.28 kB &vert; gzip: 117.27 kB<br/>
+<strong style="color: #4ade80;">&check; built in 700ms</strong>
+            </div>
+
+            <h3 style="font-size: 14px; font-weight: 800; color: #0d9488; text-transform: uppercase; margin-bottom: 8px;">14.2 Database Connection Pooling & Resilience</h3>
+            <p style="font-size: 12.5px; line-height: 1.7; color: #334155; text-align: justify; margin-bottom: 12px;">
+                Mongoose establishes an intelligent connection pool against the MongoDB Atlas replica set, retaining warm sockets to eliminate SSL handshake overheads during bursts of participant registrations.
+            </p>
+
+            <h3 style="font-size: 14px; font-weight: 800; color: #0d9488; text-transform: uppercase; margin-bottom: 8px;">14.3 Tailwind CSS v4 Zero-Runtime Overhead</h3>
+            <p style="font-size: 12.5px; line-height: 1.7; color: #334155; text-align: justify; margin: 0;">
+                By utilizing Tailwind CSS v4 with JIT (Just-In-Time) compilation, the entire application styles compile into a tiny 10.31 kB gzipped CSS bundle, ensuring instant First Contentful Paint (FCP) on mobile networks.
+            </p>
+        </div>
+        
+        </div>
+        <div class="page-footer">
+            <span>MERN Stack Mini Project &bull; Academic Session 2026</span>
+            <span class="page-number">Page 26 of 30</span>
+        </div>
+    </div>
+    
+
+    <div class="page" id="page-27">
+        <div class="page-header">
+            <span class="brand">Medical Camp Registration Portal &bull; SIH 2025</span>
+            <span>CHAPTER 15: DEPLOYMENT & CLOUD HOSTING</span>
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">CHAPTER 15: DEPLOYMENT & CLOUD HOSTING</h2>
+            <div class="page-subtitle">Vercel Frontend, MongoDB Atlas Cluster & Git Configuration</div>
+            
+        <div style="padding: 10px 0;">
+            <p style="font-size: 13px; line-height: 1.7; color: #334155; text-align: justify; margin-bottom: 14px;">
+                The project utilizes a cloud-native continuous deployment pipeline connecting GitHub, Vercel, and MongoDB Atlas.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px;">
+                <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-top: 4px solid #000000; border-radius: 8px; padding: 12px;">
+                    <strong style="font-size: 13px; color: #000000; display: block; margin-bottom: 4px;">VERCEL CLOUD</strong>
+                    <span style="font-size: 11px; color: #64748b;">Frontend Hosting</span>
+                    <ul style="font-size: 11px; color: #334155; margin: 8px 0 0 0; padding-left: 14px; line-height: 1.5;">
+                        <li>Automated Git build triggers</li>
+                        <li>Global Edge CDN caching</li>
+                        <li>SPA rewrites via vercel.json</li>
+                    </ul>
+                </div>
+
+                <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-top: 4px solid #16a34a; border-radius: 8px; padding: 12px;">
+                    <strong style="font-size: 13px; color: #15803d; display: block; margin-bottom: 4px;">MONGODB ATLAS</strong>
+                    <span style="font-size: 11px; color: #64748b;">Database Cluster</span>
+                    <ul style="font-size: 11px; color: #334155; margin: 8px 0 0 0; padding-left: 14px; line-height: 1.5;">
+                        <li>Multi-region replica set</li>
+                        <li>Automated daily backups</li>
+                        <li>SSL/TLS encrypted transport</li>
+                    </ul>
+                </div>
+
+                <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-top: 4px solid #2563eb; border-radius: 8px; padding: 12px;">
+                    <strong style="font-size: 13px; color: #1d4ed8; display: block; margin-bottom: 4px;">GITHUB REPO</strong>
+                    <span style="font-size: 11px; color: #64748b;">Version Control</span>
+                    <ul style="font-size: 11px; color: #334155; margin: 8px 0 0 0; padding-left: 14px; line-height: 1.5;">
+                        <li>Main branch deployment</li>
+                        <li>Strict .gitignore protection</li>
+                        <li>Clean open-source repository</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 style="font-size: 14px; font-weight: 800; color: #0f172a; text-transform: uppercase; margin-bottom: 8px;">Environment Configuration & Security</h3>
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 12px; font-size: 11.5px; line-height: 1.6; color: #334155;">
+                <strong>Gitignore Enforcement:</strong> All sensitive credentials (<code>MONGO_URI</code>, <code>JWT_SECRET</code>) are stored in <code>backend/.env</code> and strictly excluded from Git tracking via <code>.gitignore</code> (<code>.env</code>, <code>.env.*</code>, <code>*.env</code>). A clean template <code>backend/.env.example</code> is version-controlled to guide subsequent developers without leaking live production secrets.
+            </div>
+        </div>
+        
+        </div>
+        <div class="page-footer">
+            <span>MERN Stack Mini Project &bull; Academic Session 2026</span>
+            <span class="page-number">Page 27 of 30</span>
+        </div>
+    </div>
+    
+
+    <div class="page" id="page-28">
+        <div class="page-header">
+            <span class="brand">Medical Camp Registration Portal &bull; SIH 2025</span>
+            <span>CHAPTER 16: RESULTS & ROADMAP</span>
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">CHAPTER 16: RESULTS & FUTURE ENHANCEMENTS</h2>
+            <div class="page-subtitle">Project Deliverables & Long-Term Technological Roadmap</div>
+            
+        <div style="padding: 10px 0;">
+            <h3 style="font-size: 14px; font-weight: 800; color: #0f172a; text-transform: uppercase; margin-bottom: 10px;">16.1 Qualitative & Quantitative Project Outcomes</h3>
+            <table style="width: 100%; border-collapse: collapse; font-size: 11.5px; margin-bottom: 16px;">
+                <thead>
+                    <tr style="background: #1e293b; color: white;">
+                        <th style="padding: 6px 10px; text-align: left; border: 1px solid #334155; width: 30%;">Operational Dimension</th>
+                        <th style="padding: 6px 10px; text-align: left; border: 1px solid #334155; width: 35%;">Traditional Paper System</th>
+                        <th style="padding: 6px 10px; text-align: left; border: 1px solid #334155; width: 35%;">Medical Camp Registration Portal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td style="padding: 5px 10px; border: 1px solid #e2e8f0; font-weight: bold;">Registration Time</td><td style="padding: 5px 10px; border: 1px solid #e2e8f0; color: #dc2626;">5 to 15 minutes (physical queue)</td><td style="padding: 5px 10px; border: 1px solid #e2e8f0; color: #16a34a; font-weight: bold;">Sub-10 seconds online</td></tr>
+                    <tr style="background: #f8fafc;"><td style="padding: 5px 10px; border: 1px solid #e2e8f0; font-weight: bold;">Overbooking Errors</td><td style="padding: 5px 10px; border: 1px solid #e2e8f0; color: #dc2626;">Frequent (no slot locks)</td><td style="padding: 5px 10px; border: 1px solid #e2e8f0; color: #16a34a; font-weight: bold;">0% (automated slot guards)</td></tr>
+                    <tr><td style="padding: 5px 10px; border: 1px solid #e2e8f0; font-weight: bold;">Doctor Coordination</td><td style="padding: 5px 10px; border: 1px solid #e2e8f0; color: #dc2626;">Manual phone calls & paper rosters</td><td style="padding: 5px 10px; border: 1px solid #e2e8f0; color: #16a34a; font-weight: bold;">Dedicated Doctor Dashboard</td></tr>
+                    <tr style="background: #f8fafc;"><td style="padding: 5px 10px; border: 1px solid #e2e8f0; font-weight: bold;">Attendance Auditing</td><td style="padding: 5px 10px; border: 1px solid #e2e8f0; color: #dc2626;">Handwritten tally sheets</td><td style="padding: 5px 10px; border: 1px solid #e2e8f0; color: #16a34a; font-weight: bold;">Real-time digital status sync</td></tr>
+                </tbody>
+            </table>
+
+            <h3 style="font-size: 14px; font-weight: 800; color: #0d9488; text-transform: uppercase; margin-bottom: 8px;">16.2 Future Enhancements Roadmap</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 11.5px; line-height: 1.6;">
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px;">
+                    <strong style="color: #0d9488; display: block; margin-bottom: 4px;">1. Automated SMS / WhatsApp Alerts</strong>
+                    Integrate Twilio or WhatsApp Business API to dispatch booking confirmations and reminder notifications 24 hours prior to camp execution.
+                </div>
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px;">
+                    <strong style="color: #0d9488; display: block; margin-bottom: 4px;">2. QR-Code Check-In Scanners</strong>
+                    Embed dynamic QR codes onto the digital registration slips, allowing attending nurses to mark attendance with a smartphone camera scan.
+                </div>
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px;">
+                    <strong style="color: #0d9488; display: block; margin-bottom: 4px;">3. Electronic Prescription Uploads</strong>
+                    Enable doctors to upload digital prescriptions and diagnostic notes securely into the participant's consultation history.
+                </div>
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px;">
+                    <strong style="color: #0d9488; display: block; margin-bottom: 4px;">4. Multilingual Regional Support</strong>
+                    Implement i18n localization in Hindi, Telugu, Tamil, and Bengali to maximize accessibility in rural community medical camps.
+                </div>
+            </div>
+        </div>
+        
+        </div>
+        <div class="page-footer">
+            <span>MERN Stack Mini Project &bull; Academic Session 2026</span>
+            <span class="page-number">Page 28 of 30</span>
+        </div>
+    </div>
+    
+
+    <div class="page" id="page-29">
+        <div class="page-header">
+            <span class="brand">Medical Camp Registration Portal &bull; SIH 2025</span>
+            <span>CHAPTER 17: CONCLUSION</span>
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">CHAPTER 17: CONCLUSION & SUMMARY</h2>
+            <div class="page-subtitle">Project Retrospective & Technical Accomplishments</div>
+            
+        <div style="padding: 10px 0;">
+            <p style="font-size: 13px; line-height: 1.75; color: #334155; text-align: justify; margin-bottom: 14px;">
+                The <strong>Medical Camp Registration Portal</strong> successfully accomplishes all academic, functional, and technological goals set forth in the <em>SIH 2025 Healthcare & Medical Camp Management</em> initiative.
+            </p>
+
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 10px; padding: 14px; margin-bottom: 16px;">
+                <h4 style="font-size: 13px; font-weight: 800; color: #0f172a; text-transform: uppercase; margin-bottom: 8px;">Key Deliverables Achieved:</h4>
+                <ul style="font-size: 12px; line-height: 1.7; color: #334155; margin: 0; padding-left: 18px;">
+                    <li><strong>Full MERN Stack Engineering:</strong> Complete integration of React 19, Express.js 5, Node.js v24, and MongoDB Atlas.</li>
+                    <li><strong>Strict 3-Collection Database Architecture:</strong> High-performance, lean relational data model (<code>Users</code>, <code>MedicalCamps</code>, and <code>Registrations</code>) strictly storing only specified attributes.</li>
+                    <li><strong>Single Admin & Secret Master Access:</strong> Robust administrative protection centered via React Portals with <code>Admin@2026</code> master password validation.</li>
+                    <li><strong>Verified Doctor Assignment:</strong> Automated database validation eliminating fictitious doctor entries and synchronizing clinical schedules.</li>
+                    <li><strong>Cloud Production Deployment:</strong> High-availability frontend deployed live on Vercel with automated GitHub synchronization.</li>
+                </ul>
+            </div>
+
+            <p style="font-size: 13px; line-height: 1.75; color: #334155; text-align: justify; margin: 0;">
+                In summary, this project exemplifies how modern web frameworks can modernize grassroots community healthcare operations—replacing fragmented paper trails with instantaneous, reliable, and accessible digital workflows.
+            </p>
+        </div>
+        
+        </div>
+        <div class="page-footer">
+            <span>MERN Stack Mini Project &bull; Academic Session 2026</span>
+            <span class="page-number">Page 29 of 30</span>
+        </div>
+    </div>
+    
+
+    <div class="page" id="page-30">
+        <div class="page-header">
+            <span class="brand">Medical Camp Registration Portal &bull; SIH 2025</span>
+            <span>CHAPTER 18: REFERENCES & DEPLOYMENT</span>
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">CHAPTER 18: REFERENCES, REPOSITORY & LIVE URL</h2>
+            <div class="page-subtitle">Documentation Citations, Source Code & Production Deployment</div>
+            
+        <div style="padding: 10px 0;">
+            <h3 style="font-size: 14px; font-weight: 800; color: #0f172a; text-transform: uppercase; margin-bottom: 10px;">18.1 Academic & Technical References</h3>
+            <ol style="font-size: 11.5px; line-height: 1.7; color: #334155; margin-bottom: 16px; padding-left: 18px;">
+                <li>Smart India Hackathon (SIH 2025) – Healthcare & Medical Camp Outreach Problem Statements, Ministry of Education Innovation Cell, Govt. of India.</li>
+                <li>React 19 Documentation – React Portals, Hooks, Virtual DOM & State Management: <code>https://react.dev/</code></li>
+                <li>Express.js 5 Guide – REST API Routing, Middleware & HTTP Protocol Standards: <code>https://expressjs.com/</code></li>
+                <li>MongoDB Atlas Manual – Cloud Sharded Clusters, Mongoose ODM & Query Optimization: <code>https://www.mongodb.com/docs/</code></li>
+                <li>Tailwind CSS v4 Documentation – Utility-First Responsive Styling: <code>https://tailwindcss.com/</code></li>
+            </ol>
+
+            <h3 style="font-size: 14px; font-weight: 800; color: #0d9488; text-transform: uppercase; margin-bottom: 10px;">18.2 Official GitHub Source Code Repository</h3>
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 12px; margin-bottom: 20px; font-size: 12px; line-height: 1.6;">
+                <strong>Repository:</strong> <code>https://github.com/durga-prasad2006/Medical-Camp-Registration-Portal</code><br/>
+                <strong>Branch:</strong> <code>main</code> &bull; <strong>License:</strong> MIT Open Source &bull; <strong>Author:</strong> Durga Prasad
+            </div>
+
+            <div style="background: #f0fdfa; border: 2px solid #0d9488; border-radius: 12px; padding: 20px; text-align: center;">
+                <div style="font-size: 13px; font-weight: 800; color: #0f766e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px;">
+                    Official Live Production Deployment URL
+                </div>
+                <div style="font-size: 16px; font-weight: 900; margin-bottom: 8px;">
+                    <a href="https://medical-camp-registration-portal-tawny.vercel.app/" target="_blank" style="color: #2563eb; text-decoration: underline; word-break: break-all;">
+                        https://medical-camp-registration-portal-tawny.vercel.app/
+                    </a>
+                </div>
+                <p style="font-size: 12px; color: #475569; margin: 0;">
+                    Hosted on Vercel Global Edge Network with live database connectivity to MongoDB Atlas.
+                </p>
+            </div>
+        </div>
+        
+        </div>
+        <div class="page-footer">
+            <span>MERN Stack Mini Project &bull; Academic Session 2026</span>
+            <span class="page-number">Page 30 of 30</span>
+        </div>
+    </div>
+    
+</div>
+
+</body>
+</html>
